@@ -1,0 +1,103 @@
+/* src/components/CourseWork.css */
+
+.coursework-container {
+  display: flex;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Use a professional font */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.sidebar {
+  width: 200px;
+  position: sticky;
+  top: 20px;
+  padding-left: 20px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #007bff;
+  font-size: 1rem;
+  display: block;
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover {
+  background-color: #f0f0f0;
+}
+
+.course-content {
+  flex: 1;
+  padding-right: 20px;
+  border-right: 1px solid #ddd;
+}
+
+.course-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #333;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+}
+
+.course-category {
+  margin-bottom: 40px;
+}
+
+.course-category h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #007bff;
+}
+
+.course {
+  margin-bottom: 10px;
+  padding: 10px; /* Smaller padding when not pressed */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: box-shadow 0.3s, padding 0.3s ease-in-out, max-height 0.3s ease-in-out; /* Smooth transition for padding and max-height */
+  text-align: left; /* Align text to the left */
+  cursor: pointer; /* Show cursor as pointer for clickable items */
+  max-height: 50px; /* Smaller height when not active */
+  overflow: hidden; /* Hide overflow content */
+}
+
+.course:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.course h3 {
+  font-size: 1.2rem; /* Smaller font size for course titles */
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.course p {
+  font-size: 0.9rem; /* Smaller font size for descriptions */
+  line-height: 1.4;
+  color: #666;
+  margin-top: 10px; /* Add some margin on top of the description */
+  transition: opacity 0.3s ease-in-out; /* Smooth transition for opacity */
+  opacity: 0; /* Start with opacity 0 */
+}
+
+.course.active {
+  max-height: 300px; /* Expand height when active */
+  padding: 10px; /* Increase padding when active */
+}
+
+.course.active p {
+  opacity: 1; /* Show description when active */
+}

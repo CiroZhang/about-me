@@ -1,0 +1,91 @@
+/* src/components/Projects.css */
+
+.projects-container {
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Use a professional font */
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.projects-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #333;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+}
+
+.research, .project {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.research-image {
+  flex: 0 0 400px; /* Adjust this value to make the research image bigger or smaller */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.research-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px 0 0 8px;
+}
+
+.video {
+  flex: 0 0 350px; /* Adjust this value to leave more space for text */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.research-details, .project-details {
+  flex: 2;
+  padding: 20px;
+}
+
+.research-details h2, .project-details h2 {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+  color: #007bff;
+}
+
+.research-details a, .project-details a {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+  color: #007bff;
+}
+
+.research-details p, .project-details p {
+  font-size: 1rem;
+  margin-bottom: 5px;
+  color: #666;
+}
+
+.research-details .contributors, .project-details .contributors {
+  font-size: 1rem;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.research-details a, .project-details a {
+  display: block;
+  margin-top: 10px;
+  font-size: 1.5rem;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.research-details a:hover, .project-details a:hover {
+  text-decoration: underline;
+}
+
+
+
