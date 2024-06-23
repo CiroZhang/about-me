@@ -11,29 +11,36 @@
 .about-container p {
   font-size: 1.2em;
   margin-bottom: 20px;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 800px;
 }
 
-.about-container ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.about-container li {
-  font-size: 1.2em;
-  margin-bottom: 10px;
+.profile-picture {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 20px;
 }
 
 .social-links {
   margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 .social-icon {
   width: 40px;
   height: 40px;
-  margin: 0 10px;
   transition: transform 0.2s;
 }
 
 .social-icon:hover {
   transform: scale(1.1);
+}
+
+.social-icon img {
+  border-radius: 50%;
 }
