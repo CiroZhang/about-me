@@ -1,0 +1,184 @@
+{
+  "bio": {
+    "name": "Ciro Zhang",
+    "description": "Data Science and Computer Engineering double major at UC San Diego (GPA: 3.96). I build ML systems that solve real-world problems—from digital pathology pipelines to bioluminescence prediction models. Currently researching at UBC on computer vision for medical diagnostics and at UCSD on ecological time-series forecasting."
+  },
+  "focus": [
+    {
+      "title": "Computer Vision & Medical AI",
+      "description": "Building pipelines for digital pathology, document analysis, and object detection. Experience with YOLO, OCR, and fine-tuning vision models for real-world diagnostic applications."
+    },
+    {
+      "title": "ML Systems & NLP",
+      "description": "Developing end-to-end ML pipelines with PyTorch and TensorFlow. Working with LLMs, embeddings, and transformers for document processing, auto-reply systems, and knowledge extraction."
+    }
+  ],
+  "currentThreads": [
+    "Building CV/OCR pipelines for pathology textbook analysis at UBC (Dr. Li Xiaoxiao).",
+    "Combining EDM time-series models with CNNs for bioluminescence prediction at UCSD (Dr. George Sugihara).",
+    "Training YOLO models for cervical cancer cytology detection in digital pathology workflows."
+  ],
+  "projects": [
+    {
+      "title": "Paper Reader: Document AI Pipeline",
+      "type": "personal",
+      "tags": "Python • YOLO • PyMuPDF • BERT",
+      "description": "Built a pipeline to convert research PDFs into structured Markdown/JSON datasets. Applied DocLayNet (YOLO) for layout detection and PyMuPDF for text/figure extraction. Reduced noise using regex + BERT-based filtering.",
+      "youtubeId": "jjB-xDtmhq8",
+      "links": [
+        { "label": "GitHub", "url": "https://github.com/CiroZhang/paper_reader" },
+        { "label": "Watch Demo", "url": "https://www.youtube.com/watch?v=jjB-xDtmhq8" }
+      ]
+    },
+    {
+      "title": "Gmail Replier: LLM Auto-Reply Bot",
+      "type": "personal",
+      "tags": "Python • OpenAI API • Gmail API • OAuth",
+      "description": "Python service that scans Gmail and drafts replies with OpenAI or Ollama, supporting dry-run and safe-prompt modes. Integrated Gmail API with OAuth, custom labels, and robust error-handling with exponential backoff.",
+      "youtubeId": "x1i6cRyJ0fU",
+      "links": [
+        { "label": "GitHub", "url": "https://github.com/CiroZhang/gmail_replier" },
+        { "label": "Watch Demo", "url": "https://www.youtube.com/watch?v=x1i6cRyJ0fU" }
+      ]
+    },
+    {
+      "title": "Fish Game: HTML5 Jumping Game",
+      "type": "personal",
+      "tags": "JavaScript • HTML5 Canvas",
+      "description": "Browser-based jumping game built with vanilla JavaScript and HTML5 Canvas. Features custom physics engine, camera system, and procedurally generated environments. Deployed on GitHub Pages for instant play.",
+      "youtubeId": "zkjLWrAZbpU",
+      "links": [
+        { "label": "GitHub", "url": "https://github.com/CiroZhang/jumping_game" },
+        { "label": "Play Game", "url": "https://cirozhang.github.io/jumping_game/" },
+        { "label": "Watch Demo", "url": "https://www.youtube.com/watch?v=zkjLWrAZbpU" }
+      ]
+    },
+    {
+      "title": "HAB Forecasting: Harmful Algal Bloom Prediction",
+      "type": "personal",
+      "tags": "Python • Ensemble ML • Oceanographic Data",
+      "description": "Research project predicting harmful algal blooms at Scripps Pier using ensemble ML models (750 models). Multi-timeframe forecasting (1-3 weeks) with configurable thresholds and confidence intervals. Deployed live forecasting tool integrated with SCCOOS monitoring data.",
+      "youtubeId": "dFTLY2ewIhc",
+      "links": [
+        { "label": "GitHub", "url": "https://github.com/aparaselli/HAB-Prediction-Research" },
+        { "label": "Live Demo", "url": "https://my-frontend-bucket-459820.storage.googleapis.com/index.html" },
+        { "label": "Watch Demo", "url": "https://www.youtube.com/watch?v=dFTLY2ewIhc" }
+      ]
+    },
+    {
+      "title": "Wiki-Graph-Explorer: Wikipedia BFS Game",
+      "type": "personal",
+      "tags": "Svelte • D3.js • Graph Algorithms",
+      "description": "Interactive web app that visualizes paths between Wikipedia articles using BFS graph traversal. Built with Svelte and D3 for dynamic graph visualization. Includes data processing pipeline with Jupyter notebooks for Wikipedia article parsing.",
+      "youtubeId": "_-Iog7sBY0Y",
+      "links": [
+        { "label": "GitHub", "url": "https://github.com/TQZhang04/wikipedia-game-bfs" },
+        { "label": "Play Game", "url": "https://tqzhang04.github.io/wikipedia-game-bfs/" },
+        { "label": "Watch Demo", "url": "https://www.youtube.com/watch?v=_-Iog7sBY0Y" }
+      ]
+    },
+    {
+      "title": "DSC10 Practice Platform",
+      "type": "group",
+      "tags": "Python • Pandoc • BeautifulSoup • Educational Tool",
+      "description": "Practice problem platform for UCSD's DSC 10 course hosting past exams and discussion materials. Built LaTeX-to-Markdown conversion tools and standardized problem formatting system. Supports multiple question types with 53+ contributors and 1,400+ commits.",
+      "links": [
+        { "label": "GitHub", "url": "https://github.com/dsc-courses/practice.dsc10.com" },
+        { "label": "Visit Site", "url": "https://practice.dsc10.com/" }
+      ]
+    },
+    {
+      "title": "Slice: Android Bill Splitting App",
+      "type": "personal",
+      "tags": "Java • Android • Gradle",
+      "description": "Android app for splitting bills among groups. Built with Java using Android Studio with 120+ commits. Features user-friendly interface for tracking expenses and calculating individual shares.",
+      "youtubeId": "onHAY8Da6oI",
+      "links": [
+        { "label": "GitHub", "url": "https://github.com/SunbathingFish/billSplit_app" },
+        { "label": "Watch Demo", "url": "https://www.youtube.com/watch?v=onHAY8Da6oI" }
+      ]
+    },
+    {
+      "title": "OneTouch: Android Shortcut Widget",
+      "type": "personal",
+      "tags": "Java • Android • Widgets",
+      "description": "Android widget app providing quick shortcuts and one-tap actions. Built with Java for Android, featuring customizable widgets for improved productivity and quick access to frequently used functions.",
+      "youtubeId": "v9uu0OD_uUM",
+      "links": [
+        { "label": "GitHub", "url": "https://github.com/SunbathingFish/WidgetApp" },
+        { "label": "Watch Demo", "url": "https://www.youtube.com/watch?v=v9uu0OD_uUM" }
+      ]
+    }
+  ],
+  "research": [
+    {
+      "status": "active",
+      "date": "June 2024 – Present",
+      "title": "ML for Digital Pathology",
+      "advisor": "Advisor: Dr. Li Xiaoxiao • University of British Columbia",
+      "description": "Building CV/OCR pipeline to extract figure–caption pairs from pathology textbooks for fine-tuning LLMs in diagnostic Q&A. Automated cell-patch cropping in QuPath and trained YOLO models for cervical cancer cytology to detect abnormal cell regions."
+    },
+    {
+      "status": "active",
+      "date": "Jan 2025 – Present",
+      "title": "Bioluminescence Prediction with EDM + CNNs",
+      "advisor": "Advisor: Dr. George Sugihara • UC San Diego",
+      "description": "Predicting bioluminescent events on UCSD shores using empirical dynamic modeling (EDM). Co-authoring a manuscript on combining traditional EDM with modern CNNs to boost prediction accuracy. Designed an interactive web tool that visualizes real-time bioluminescence probabilities."
+    },
+    {
+      "status": "completed",
+      "date": "July 2024 – Sep 2024",
+      "title": "Charitable Donation Behavior Analysis",
+      "advisor": "Advisor: Dr. Ma Jing Jing • Peking University",
+      "description": "Developed web-scraping tools to extract user data from Tencent charity platforms. Performed statistical analysis to identify keywords and trends that drive higher donation rates."
+    }
+  ],
+  "teaching": [
+    {
+      "course": "CSE 151A: Machine Learning",
+      "term": "Sept 2023 – Present • Instructional Assistant",
+      "description": "Lead office hours and discussion sections for 300+ students with Dr. Sanjoy Dasgupta. Developed homework assignments and exams to reinforce understanding of supervised learning, model evaluation, and practical ML workflows in Python."
+    },
+    {
+      "course": "DSC 10: Principles of Data Science",
+      "term": "Sept 2023 – Present • Instructional Assistant",
+      "description": "Provided academic support for introductory data science course with Dr. Janine Tiefenbruck. Held office hours covering Python programming, pandas, data visualization, and statistical analysis."
+    }
+  ],
+  "coursework": [
+    {
+      "category": "Machine Learning & AI",
+      "courses": [
+        "CSE 151A: Machine Learning Algorithms",
+        "CSE 151B: Deep Learning",
+        "CSE 152A: Computer Vision I",
+        "CSE 156: Statistical NLP",
+        "CSE 158: Recommender Systems & Web Mining",
+        "DSC 140A/B: Probabilistic Modeling & Representation Learning",
+        "CSE 190: ML for Music and Audio"
+      ]
+    },
+    {
+      "category": "Systems & Architecture",
+      "courses": [
+        "CSE 120: Operating Systems",
+        "CSE 141/L: Computer Architecture + Lab",
+        "CSE 148: Advanced Processor Architecture",
+        "CSE 140/L: Digital Systems + Lab",
+        "ECE 111: Advanced Digital Design",
+        "CSE 110: Software Engineering"
+      ]
+    },
+    {
+      "category": "Data Science & Algorithms",
+      "courses": [
+        "DSC 80: Practice of Data Science",
+        "DSC 100: Data Management",
+        "DSC 102: Scalable Analytics",
+        "CSE 100: Advanced Data Structures",
+        "CSE 101: Algorithm Design & Analysis",
+        "MATH 189: Exploratory Data Analysis"
+      ]
+    }
+  ]
+}

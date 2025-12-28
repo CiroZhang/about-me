@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ciro.dev - Machine Learning & Embedded Systems</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ciro Zhang - Machine Learning Engineer working at the intersection of ML and embedded systems" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<!-- Boot -->
+<div id="boot">
+  <pre id="boot-text"></pre>
+</div>
+
+<!-- Sidebar Navigation -->
+<nav class="reveal delay-1">
+  <div class="nav-brand">ciro.dev</div>
+  <div class="nav-links">
+    <a href="#research">0x2000 /research</a>
+    <a href="#teaching">0x3000 /teaching</a>
+    <a href="#projects">0x4000 /projects</a>
+    <a href="#coursework">0x6000 /coursework</a>
+  </div>
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+    <span class="theme-icon">☀️</span>
+  </button>
+</nav>
+
+<!-- System Monitors -->
+<div class="system-monitors">
+  <div class="monitor">
+    <span class="monitor-label">GPU</span>
+    <div class="monitor-bar">
+      <div class="monitor-fill" id="gpu-usage"></div>
+    </div>
+    <span class="monitor-value" id="gpu-text">0%</span>
+  </div>
+  <div class="monitor">
+    <span class="monitor-label">MEM</span>
+    <div class="monitor-bar">
+      <div class="monitor-fill" id="mem-usage"></div>
+    </div>
+    <span class="monitor-value" id="mem-text">0%</span>
+  </div>
+  <div class="monitor">
+    <span class="monitor-label">TEMP</span>
+    <div class="monitor-bar">
+      <div class="monitor-fill thermal" id="temp-usage"></div>
+    </div>
+    <span class="monitor-value" id="temp-text">0°C</span>
+  </div>
+</div>
+
+<!-- Main -->
+<div id="main">
+
+  <div class="header-container">
+    <pre class="ascii-art reveal delay-2">
+   ██████╗██╗██████╗  ██████╗
+  ██╔════╝██║██╔══██╗██╔═══██╗
+  ██║     ██║██████╔╝██║   ██║
+  ██║     ██║██╔══██╗██║   ██║
+  ╚██████╗██║██║  ██║╚██████╔╝
+   ╚═════╝╚═╝╚═╝  ╚═╝ ╚═════╝
+    </pre>
+    <h1 class="reveal delay-2 glitch" id="name" data-text="Ciro Zhang">Ciro Zhang</h1>
+    <div class="ml-badge">ML Engineer</div>
+    <canvas id="neural-canvas" class="neural-network"></canvas>
+    <canvas id="gradient-canvas" class="gradient-descent"></canvas>
+  </div>
+
+  <p class="reveal delay-3" id="bio-description"></p>
+
+  <div class="social-links reveal delay-3">
+    <a href="https://github.com/CiroZhang" target="_blank" rel="noopener noreferrer" class="social-link">
+      <span class="social-icon">⟨/⟩</span>
+      <span class="social-label">GitHub</span>
+    </a>
+    <a href="https://www.linkedin.com/in/ciro-zhang/" target="_blank" rel="noopener noreferrer" class="social-link">
+      <span class="social-icon">in</span>
+      <span class="social-label">LinkedIn</span>
+    </a>
+    <a href="https://www.youtube.com/@cirozhang" target="_blank" rel="noopener noreferrer" class="social-link">
+      <span class="social-icon">▶</span>
+      <span class="social-label">YouTube</span>
+    </a>
+  </div>
+
+  <!-- Floating Code Snippets -->
+  <div class="code-snippets" id="code-snippets"></div>
+
+  <!-- Interactive Terminal -->
+  <div class="terminal-overlay" id="terminal-overlay">
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <span class="terminal-title">ciro@dev:~$</span>
+        <button class="terminal-close" id="terminal-close">×</button>
+      </div>
+      <div class="terminal-body" id="terminal-body">
+        <div class="terminal-line">Welcome to Ciro's Portfolio Terminal v1.0</div>
+        <div class="terminal-line">Type 'help' for available commands</div>
+        <div class="terminal-line"></div>
+      </div>
+      <div class="terminal-input-line">
+        <span class="terminal-prompt">guest@ciro.dev:~$ </span>
+        <input type="text" class="terminal-input" id="terminal-input" autocomplete="off" spellcheck="false">
+      </div>
+    </div>
+  </div>
+
+  <!-- CRT Scanlines -->
+  <div class="scanlines"></div>
+
+  <!-- Binary Rain Container -->
+  <div class="binary-rain" id="binary-rain"></div>
+
+  <!-- ML Training Metrics Display -->
+  <div class="ml-metrics">
+    <div class="metric-item">
+      <span class="metric-label">ACCURACY</span>
+      <span class="metric-value" id="accuracy-value">0.0000</span>
+    </div>
+    <div class="metric-item">
+      <span class="metric-label">LOSS</span>
+      <span class="metric-value" id="loss-value">0.0000</span>
+    </div>
+    <div class="metric-item">
+      <span class="metric-label">EPOCH</span>
+      <span class="metric-value" id="epoch-value">0/100</span>
+    </div>
+  </div>
+
+  <h2 class="reveal delay-4">Focus <span class="mem-addr">0x0000</span></h2>
+  <div class="focus" id="focus-container"></div>
+
+  <h2 class="reveal delay-4">Tech Stack <span class="mem-addr">0x1000</span></h2>
+  <div class="tech-stack reveal delay-5">
+    <div class="tech-category">
+      <h3>ML/AI</h3>
+      <div class="skill-bar">
+        <div class="skill-fill" style="width: 95%; --skill-color: #8b5cf6;">
+          <span>PyTorch</span><span>95%</span>
+        </div>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-fill" style="width: 90%; --skill-color: #8b5cf6;">
+          <span>TensorFlow</span><span>90%</span>
+        </div>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-fill" style="width: 92%; --skill-color: #8b5cf6;">
+          <span>scikit-learn</span><span>92%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tech-category">
+      <h3>Computer Vision</h3>
+      <div class="skill-bar">
+        <div class="skill-fill" style="width: 93%; --skill-color: #06b6d4;">
+          <span>OpenCV</span><span>93%</span>
+        </div>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-fill" style="width: 88%; --skill-color: #06b6d4;">
+          <span>YOLO</span><span>88%</span>
+        </div>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-fill" style="width: 85%; --skill-color: #06b6d4;">
+          <span>OCR/Document AI</span><span>85%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tech-category">
+      <h3>Programming</h3>
+      <div class="skill-bar">
+        <div class="skill-fill" style="width: 97%; --skill-color: #10b981;">
+          <span>Python</span><span>97%</span>
+        </div>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-fill" style="width: 85%; --skill-color: #10b981;">
+          <span>C/C++</span><span>85%</span>
+        </div>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-fill" style="width: 88%; --skill-color: #10b981;">
+          <span>Java</span><span>88%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tech-category">
+      <h3>Systems</h3>
+      <div class="skill-bar">
+        <div class="skill-fill" style="width: 90%; --skill-color: #f59e0b;">
+          <span>Linux/Unix</span><span>90%</span>
+        </div>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-fill" style="width: 82%; --skill-color: #f59e0b;">
+          <span>Docker</span><span>82%</span>
+        </div>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-fill" style="width: 87%; --skill-color: #f59e0b;">
+          <span>Git</span><span>87%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="reveal delay-4" id="research">Research <span class="mem-addr">0x2000</span></h2>
+  <div class="research-list" id="research-container"></div>
+
+
+  <h2 class="reveal delay-4" id="teaching">Teaching <span class="mem-addr">0x3000</span></h2>
+  <div class="teaching-list" id="teaching-container"></div>
+
+
+  <h2 class="reveal delay-4" id="projects">Projects <span class="mem-addr">0x4000</span></h2>
+  <div class="video-gallery" id="personal-projects-container"></div>
+
+  <h2 class="reveal delay-4">Group Projects <span class="mem-addr">0x5000</span></h2>
+  <div class="projects" id="group-projects-container"></div>
+
+  <h2 class="reveal delay-4" id="coursework">Coursework <span class="mem-addr">0x6000</span></h2>
+  <div class="coursework reveal delay-5" id="coursework-container"></div>
+
+  <footer class="reveal delay-5">
+    <div>kernel 6.0 · uptime <span id="uptime">0s</span> · faults 1</div>
+    <div>UCSD '26 · CE + DS · San Diego, CA</div>
+  </footer>
+</div>
+
+<!-- Scripts -->
+<script src="script.js"></script>
+
+</body>
+</html>
