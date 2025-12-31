@@ -590,18 +590,34 @@ function initThemeToggle() {
   const themeIcon = themeToggle.querySelector('.theme-icon');
   const html = document.documentElement;
 
-  // Load saved theme or default to dark
-  const savedTheme = localStorage.getItem('theme') || 'dark';
+  // Check if mobile view
+  const isMobile = window.innerWidth <= 768;
+
+  // Force light theme on mobile, otherwise load saved theme or default to light
+  const savedTheme = isMobile ? 'light' : (localStorage.getItem('theme') || 'light');
   html.setAttribute('data-theme', savedTheme);
   updateThemeIcon(savedTheme, themeIcon);
 
   themeToggle.addEventListener('click', () => {
+    // Prevent theme change on mobile
+    if (window.innerWidth <= 768) {
+      return;
+    }
+
     const currentTheme = html.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
     html.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
     updateThemeIcon(newTheme, themeIcon);
+  });
+
+  // Listen for window resize to force light mode if switching to mobile
+  window.addEventListener('resize', () => {
+    if (window.innerWidth <= 768) {
+      html.setAttribute('data-theme', 'light');
+      updateThemeIcon('light', themeIcon);
+    }
   });
 }
 
