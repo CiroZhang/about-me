@@ -680,16 +680,77 @@ footer {
    Responsive Design
    ======================================== */
 @media (max-width: 768px) {
+  nav {
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 8px 12px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+    border-right: none;
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(90deg, var(--accent), var(--accent-secondary), transparent) 1;
+  }
+
+  .nav-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-brand {
+    font-size: 11px;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  nav a {
+    font-size: 8px;
+    padding: 4px 6px;
+    white-space: nowrap;
+  }
+
+  .theme-toggle {
+    padding: 4px;
+    font-size: 10px;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+  }
+
   #main {
-    padding: 60px 6vw;
+    padding: 65px 20px 60px;
+    left: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .system-monitors {
+    display: none;
   }
 
   h1 {
-    font-size: 36px;
+    font-size: 32px;
   }
 
   h2 {
-    font-size: 22px;
+    font-size: 20px;
+    margin-top: 60px;
   }
 
   h2::before {
@@ -697,26 +758,17 @@ footer {
     height: 24px;
   }
 
-  nav {
-    padding: 12px 6vw;
+  .ascii-art {
+    font-size: 8px;
   }
 
-  .nav-brand {
-    font-size: 16px;
+  .header-container {
+    text-align: center;
   }
 
-  .nav-links {
-    gap: 6px;
-  }
-
-  nav a {
-    font-size: 11px;
-    padding: 6px 10px;
-  }
-
-  .theme-toggle {
-    padding: 6px 10px;
-    font-size: 16px;
+  .ml-badge {
+    font-size: 10px;
+    padding: 4px 10px;
   }
 
   .video-gallery {
@@ -727,9 +779,135 @@ footer {
     grid-template-columns: 1fr;
   }
 
+  .tech-stack {
+    grid-template-columns: 1fr;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+
   footer {
     flex-direction: column;
     gap: 8px;
+    text-align: center;
+  }
+
+  .neural-network,
+  .gradient-descent {
+    display: none;
+  }
+
+  .binary-rain {
+    width: 100px;
+  }
+
+  .code-decoration {
+    display: none;
+  }
+
+  .ml-metrics {
+    display: none;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .block {
+    padding: 24px;
+  }
+
+  .project-card {
+    padding: 20px;
+  }
+
+  .projects {
+    grid-template-columns: 1fr;
+  }
+
+  .teaching-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .teaching-term {
+    white-space: normal;
+  }
+
+  .coursework {
+    grid-template-columns: 1fr;
+  }
+
+  footer div:last-child {
+    text-align: center;
+  }
+}
+
+/* ========================================
+   Extra Small Screens (Phones)
+   ======================================== */
+@media (max-width: 480px) {
+  nav {
+    padding: 6px 10px;
+    gap: 4px;
+  }
+
+  .nav-brand {
+    font-size: 10px;
+  }
+
+  nav a {
+    font-size: 7px;
+    padding: 3px 5px;
+  }
+
+  .theme-toggle {
+    font-size: 9px;
+    padding: 3px;
+    width: 20px;
+    height: 20px;
+  }
+
+  #main {
+    padding: 60px 16px 40px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 18px;
+    margin-top: 50px;
+  }
+
+  .ascii-art {
+    font-size: 6px;
+  }
+
+  .ml-badge {
+    font-size: 9px;
+    padding: 4px 8px;
+  }
+
+  .social-link {
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+
+  .block,
+  .project-card,
+  .teaching-item {
+    padding: 16px;
+  }
+
+  .research-item {
+    padding-left: 24px;
+  }
+
+  p {
+    font-size: 13px;
   }
 }
 
@@ -1320,37 +1498,6 @@ footer div:last-child::before {
   margin-right: 0;
 }
 
-/* ========================================
-   Responsive Updates
-   ======================================== */
-@media (max-width: 768px) {
-  .projects {
-    grid-template-columns: 1fr;
-  }
-
-  .teaching-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .teaching-term {
-    white-space: normal;
-  }
-
-  .coursework {
-    grid-template-columns: 1fr;
-  }
-
-  footer {
-    flex-direction: column;
-    text-align: center;
-    gap: 12px;
-  }
-
-  footer div:last-child {
-    text-align: center;
-  }
-}
 
 /* ========================================
    System Monitors (Top Bar)
@@ -1645,41 +1792,6 @@ footer div:last-child::before {
   }
 }
 
-/* ========================================
-   Mobile Adjustments for New Elements
-   ======================================== */
-@media (max-width: 768px) {
-  nav {
-    width: 200px;
-  }
-
-  #main {
-    margin-left: 200px;
-  }
-
-  .system-monitors {
-    left: 200px;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding: 8px 12px;
-  }
-
-  .monitor-bar {
-    width: 60px;
-  }
-
-  .neural-network {
-    display: none;
-  }
-
-  .binary-rain {
-    width: 100px;
-  }
-
-  .code-decoration {
-    display: none;
-  }
-}
 
 /* ========================================
    Theme Toggle Button (in Nav)
