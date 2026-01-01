@@ -165,8 +165,8 @@ function initBootSequence() {
     { text: "user@ciro.dev:~$ open /portfolio", delay: 0 },
     { text: "", delay: 200 },
     { text: "[ SEGFAULT ] page not in memory", delay: 400, class: "boot-loading" },
-    { text: "[ HANDLER ] mapping 0x7fff -> /home/ciro/portfolio.html", delay: 600 },
-    { text: "[ LOAD    ] allocating heap space...", delay: 800, class: "boot-loading" },
+    { text: "[ HANDLER ] mapping 0x7fff -> portfolio", delay: 600 },
+    { text: "[ LOAD    ] allocating heap...", delay: 800, class: "boot-loading" },
     { text: "[ READY   ] process ready", delay: 1000, class: "boot-ok" }
   ];
 
