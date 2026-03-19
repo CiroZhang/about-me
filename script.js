@@ -1,156 +1,25 @@
 // ========================================
-// Load Data from JSON
+// Typewriter Effect for Bio
 // ========================================
-let siteData = null;
-
-async function loadData() {
-  try {
-    const response = await fetch('data.json');
-    siteData = await response.json();
-    populateContent();
-  } catch (error) {
-    console.error('Error loading data:', error);
+function initTypewriter() {
+  const bioEl = document.getElementById('bio-description');
+  if (!bioEl) return;
+  const bioText = bioEl.textContent.trim();
+  bioEl.textContent = '';
+  const cursor = document.createElement('span');
+  cursor.className = 'typewriter-cursor';
+  bioEl.appendChild(cursor);
+  let i = 0;
+  function typeChar() {
+    if (i < bioText.length) {
+      bioEl.insertBefore(document.createTextNode(bioText[i]), cursor);
+      i++;
+      setTimeout(typeChar, 18);
+    } else {
+      setTimeout(() => cursor.remove(), 2000);
+    }
   }
-}
-
-function populateContent() {
-  if (!siteData) return;
-
-  // Populate bio
-  const nameElement = document.getElementById('name');
-  nameElement.textContent = siteData.bio.name;
-  nameElement.setAttribute('data-text', siteData.bio.name);
-  document.getElementById('bio-description').textContent = siteData.bio.description;
-
-  // Populate focus areas
-  const focusContainer = document.getElementById('focus-container');
-  siteData.focus.forEach((item) => {
-    const block = document.createElement('div');
-    block.className = 'block reveal delay-5';
-    block.innerHTML = `
-      <h3>${item.title}</h3>
-      <p>${item.description}</p>
-    `;
-    focusContainer.appendChild(block);
-  });
-
-  // Populate personal projects (as video showcase)
-  const personalContainer = document.getElementById('personal-projects-container');
-  const personalProjects = siteData.projects.filter(p => p.type === 'personal');
-  personalProjects.forEach((project, index) => {
-    const videoCard = document.createElement('div');
-    videoCard.className = 'video-card reveal delay-5';
-    videoCard.setAttribute('data-index', (index + 1).toString(16).toUpperCase().padStart(4, '0'));
-
-    const links = project.links
-      .filter(link => link.label !== 'Watch Demo')
-      .map(link =>
-        `<a href="${link.url}" class="project-link">${link.label} →</a>`
-      ).join('\n          ');
-
-    videoCard.innerHTML = `
-      <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/${project.youtubeId}"
-          title="${project.title}"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
-      </div>
-      <div class="video-info">
-        <div class="project-header">
-          <h3>${project.title}</h3>
-          <span class="project-tag">${project.tags}</span>
-        </div>
-        <p>${project.description}</p>
-        <div class="project-links">
-          ${links}
-        </div>
-      </div>
-    `;
-    personalContainer.appendChild(videoCard);
-  });
-
-  // Populate group projects
-  const groupContainer = document.getElementById('group-projects-container');
-  const groupProjects = siteData.projects.filter(p => p.type === 'group');
-  groupProjects.forEach((project) => {
-    const card = createProjectCard(project);
-    groupContainer.appendChild(card);
-  });
-
-  // Populate research
-  const researchContainer = document.getElementById('research-container');
-  siteData.research.forEach((item) => {
-    const researchItem = document.createElement('div');
-    researchItem.className = 'research-item reveal delay-5';
-    researchItem.innerHTML = `
-      <div class="research-meta">
-        <span class="research-status ${item.status}">${item.status === 'active' ? 'Active' : 'Completed'}</span>
-        <span class="research-date">${item.date}</span>
-      </div>
-      <h3>${item.title}</h3>
-      <p class="research-advisor">${item.advisor}</p>
-      <p>${item.description}</p>
-    `;
-    researchContainer.appendChild(researchItem);
-  });
-
-  // Populate teaching
-  const teachingContainer = document.getElementById('teaching-container');
-  siteData.teaching.forEach((item) => {
-    const teachingItem = document.createElement('div');
-    teachingItem.className = 'teaching-item reveal delay-5';
-    teachingItem.innerHTML = `
-      <div class="teaching-header">
-        <h3>${item.course}</h3>
-        <span class="teaching-term">${item.term}</span>
-      </div>
-      <p>${item.description}</p>
-    `;
-    teachingContainer.appendChild(teachingItem);
-  });
-
-  // Populate coursework
-  const courseworkContainer = document.getElementById('coursework-container');
-  siteData.coursework.forEach((category) => {
-    const courseCategory = document.createElement('div');
-    courseCategory.className = 'course-category';
-
-    const coursesList = category.courses.map(course => `<li>${course}</li>`).join('\n        ');
-
-    courseCategory.innerHTML = `
-      <h3>${category.category}</h3>
-      <ul>
-        ${coursesList}
-      </ul>
-    `;
-    courseworkContainer.appendChild(courseCategory);
-  });
-}
-
-// Helper function to create project cards
-function createProjectCard(project) {
-  const card = document.createElement('div');
-  card.className = 'project-card reveal delay-5';
-
-  const links = project.links.map(link =>
-    `<a href="${link.url}" class="project-link">${link.label} →</a>`
-  ).join('\n        ');
-
-  card.innerHTML = `
-    <div class="project-header">
-      <h3>${project.title}</h3>
-      <span class="project-tag">${project.tags}</span>
-    </div>
-    <p>${project.description}</p>
-    <div class="project-links">
-      ${links}
-    </div>
-  `;
-
-  return card;
+  setTimeout(typeChar, 600);
 }
 
 // ========================================
@@ -193,6 +62,11 @@ function initBootSequence() {
         document.body.style.overflow = "auto";
         mainElement.style.display = "block";
 
+        // Smooth main fade-in (GSAP if available, else instant)
+        if (typeof gsap !== 'undefined') {
+          gsap.fromTo(mainElement, { opacity: 0 }, { opacity: 1, duration: 0.6, ease: 'power2.out' });
+        }
+
         // Initialize all effects
         startUptime();
         initCursorGlow();
@@ -204,6 +78,8 @@ function initBootSequence() {
         initCodeDecorations();
         initHexFloaters();
         initAsciiEasterEgg();
+        initThreeBackground();
+        initVanillaTilt();
       }, 1000);
     }
   }
@@ -590,20 +466,12 @@ function initThemeToggle() {
   const themeIcon = themeToggle.querySelector('.theme-icon');
   const html = document.documentElement;
 
-  // Check if mobile view
-  const isMobile = window.innerWidth <= 768;
-
-  // Force light theme on mobile, otherwise load saved theme or default to light
-  const savedTheme = isMobile ? 'light' : (localStorage.getItem('theme') || 'light');
+  // Load saved theme or default to dark
+  const savedTheme = localStorage.getItem('theme') || 'dark';
   html.setAttribute('data-theme', savedTheme);
   updateThemeIcon(savedTheme, themeIcon);
 
   themeToggle.addEventListener('click', () => {
-    // Prevent theme change on mobile
-    if (window.innerWidth <= 768) {
-      return;
-    }
-
     const currentTheme = html.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
@@ -612,13 +480,6 @@ function initThemeToggle() {
     updateThemeIcon(newTheme, themeIcon);
   });
 
-  // Listen for window resize to force light mode if switching to mobile
-  window.addEventListener('resize', () => {
-    if (window.innerWidth <= 768) {
-      html.setAttribute('data-theme', 'light');
-      updateThemeIcon('light', themeIcon);
-    }
-  });
 }
 
 function updateThemeIcon(theme, iconElement) {
@@ -628,22 +489,14 @@ function updateThemeIcon(theme, iconElement) {
 // ========================================
 // Initialize Everything
 // ========================================
-document.addEventListener("DOMContentLoaded", async () => {
-  // Load data first
-  await loadData();
-
-  // Initialize theme toggle
+document.addEventListener("DOMContentLoaded", () => {
   initThemeToggle();
-
-  // Start boot sequence
+  initTypewriter();
+  initMobileNav();
   initBootSequence();
   initSmoothScroll();
   initKonamiCode();
-
-  // Wait for main content to appear before initializing blocks
-  setTimeout(() => {
-    initFocusBlocks();
-  }, 2000);
+  setTimeout(initFocusBlocks, 2000);
 });
 
 // ========================================
@@ -1276,12 +1129,14 @@ pathology at UBC and bioluminescence prediction at UCSD.`;
     },
 
     projects: () => {
-      if (!siteData) return 'Error: Data not loaded';
-      const projects = siteData.projects
-        .filter(p => p.type === 'personal')
-        .map((p, i) => `  ${i + 1}. ${p.title}`)
-        .join('\n');
-      return `Personal Projects:\n${projects}`;
+      return `Projects:
+  1. Paper Reader: Document AI Pipeline
+  2. Gmail Replier: LLM Auto-Reply Bot
+  3. Fish Game: HTML5 Jumping Game
+  4. HAB Forecasting: Harmful Algal Bloom Prediction
+  5. Wiki-Graph-Explorer: Wikipedia BFS Game
+  6. Slice: Android Bill Splitting App
+  7. OneTouch: Android Shortcut Widget`;
     },
 
     skills: () => {
@@ -1461,9 +1316,362 @@ function initMLMetrics() {
   setInterval(updateMetrics, 800);
 }
 
+// ========================================
+// Mobile Navigation
+// ========================================
+function initMobileNav() {
+  const hamburger = document.getElementById('hamburger-btn');
+  const overlay = document.getElementById('mobile-nav-overlay');
+  const closeBtn = document.getElementById('mobile-nav-close');
+  if (!hamburger || !overlay) return;
+
+  function openNav() {
+    overlay.classList.add('open');
+    hamburger.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeNav() {
+    overlay.classList.remove('open');
+    hamburger.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', openNav);
+  closeBtn.addEventListener('click', closeNav);
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) closeNav(); });
+  overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+}
+
+// Terminal hint button in nav
+function initTerminalHintBtn() {
+  const btn = document.getElementById('terminal-hint-btn');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    const overlay = document.getElementById('terminal-overlay');
+    const input = document.getElementById('terminal-input');
+    if (overlay) {
+      overlay.classList.add('active');
+      input && input.focus();
+    }
+  });
+}
+
 // Initialize new features after boot
 setTimeout(() => {
   initCodeSnippets();
   initTerminal();
   initMLMetrics();
+  initMobileNav();
+  initTerminalHintBtn();
+  initGSAPAnimations();
+  initEducationTabs();
+  initProjectDropdowns();
 }, 3500);
+
+// ========================================
+// Three.js Neural Network Background
+// ========================================
+function initThreeBackground() {
+  if (typeof THREE === 'undefined') return;
+
+  const container = document.getElementById('three-bg');
+  if (!container) return;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(
+    75, window.innerWidth / window.innerHeight, 0.1, 1000
+  );
+  camera.position.z = 80;
+
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+  renderer.setClearColor(0x000000, 0);
+  container.appendChild(renderer.domElement);
+
+  const PARTICLE_COUNT = window.innerWidth < 768 ? 60 : 130;
+  const positions = new Float32Array(PARTICLE_COUNT * 3);
+  const velocities = [];
+
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    positions[i * 3]     = (Math.random() - 0.5) * 200;
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 200;
+    positions[i * 3 + 2] = (Math.random() - 0.5) * 60;
+    velocities.push({
+      x: (Math.random() - 0.5) * 0.07,
+      y: (Math.random() - 0.5) * 0.07,
+      z: (Math.random() - 0.5) * 0.015,
+    });
+  }
+
+  const ptGeo = new THREE.BufferGeometry();
+  ptGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+  // Two-tone: mostly purple, some cyan
+  const ptMat1 = new THREE.PointsMaterial({
+    color: 0x8b5cf6, size: 1.4, transparent: true, opacity: 0.28, sizeAttenuation: true,
+  });
+  const ptMat2 = new THREE.PointsMaterial({
+    color: 0x06b6d4, size: 1.1, transparent: true, opacity: 0.2, sizeAttenuation: true,
+  });
+
+  const ptGeo2 = new THREE.BufferGeometry();
+  const positions2 = new Float32Array(40 * 3);
+  for (let i = 0; i < 40; i++) {
+    positions2[i * 3]     = (Math.random() - 0.5) * 200;
+    positions2[i * 3 + 1] = (Math.random() - 0.5) * 200;
+    positions2[i * 3 + 2] = (Math.random() - 0.5) * 60;
+  }
+  ptGeo2.setAttribute('position', new THREE.BufferAttribute(positions2, 3));
+
+  scene.add(new THREE.Points(ptGeo, ptMat1));
+  scene.add(new THREE.Points(ptGeo2, ptMat2));
+
+  const lineMat = new THREE.LineBasicMaterial({
+    color: 0x8b5cf6, transparent: true, opacity: 0.05,
+  });
+
+  let mx = 0, my = 0;
+  document.addEventListener('mousemove', (e) => {
+    mx = (e.clientX / window.innerWidth - 0.5) * 0.4;
+    my = (e.clientY / window.innerHeight - 0.5) * 0.4;
+  });
+
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  const CONNECTION_DISTANCE_SQ = 26 * 26;
+
+  function tick() {
+    requestAnimationFrame(tick);
+
+    const pos = ptGeo.attributes.position.array;
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      pos[i * 3]     += velocities[i].x;
+      pos[i * 3 + 1] += velocities[i].y;
+      pos[i * 3 + 2] += velocities[i].z;
+      if (Math.abs(pos[i * 3])     > 100) velocities[i].x *= -1;
+      if (Math.abs(pos[i * 3 + 1]) > 100) velocities[i].y *= -1;
+      if (Math.abs(pos[i * 3 + 2]) > 30)  velocities[i].z *= -1;
+    }
+    ptGeo.attributes.position.needsUpdate = true;
+
+    // Remove old line segments
+    const toRemove = [];
+    scene.children.forEach(c => { if (c.isLine) toRemove.push(c); });
+    toRemove.forEach(c => { scene.remove(c); c.geometry.dispose(); });
+
+    // Draw new connections
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      for (let j = i + 1; j < PARTICLE_COUNT; j++) {
+        const dx = pos[i*3] - pos[j*3];
+        const dy = pos[i*3+1] - pos[j*3+1];
+        if (dx*dx + dy*dy < CONNECTION_DISTANCE_SQ) {
+          const lgeom = new THREE.BufferGeometry().setFromPoints([
+            new THREE.Vector3(pos[i*3], pos[i*3+1], pos[i*3+2]),
+            new THREE.Vector3(pos[j*3], pos[j*3+1], pos[j*3+2]),
+          ]);
+          scene.add(new THREE.Line(lgeom, lineMat));
+        }
+      }
+    }
+
+    camera.position.x += (mx * 12 - camera.position.x) * 0.03;
+    camera.position.y += (-my * 12 - camera.position.y) * 0.03;
+    camera.lookAt(scene.position);
+    renderer.render(scene, camera);
+  }
+
+  tick();
+}
+
+// ========================================
+// GSAP ScrollTrigger Animations
+// ========================================
+function initGSAPAnimations() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Section headings: slide from left
+  gsap.utils.toArray('h2').forEach((heading) => {
+    gsap.fromTo(heading,
+      { x: -50, opacity: 0 },
+      { scrollTrigger: { trigger: heading, start: 'top 88%', toggleActions: 'play none none none' },
+        x: 0, opacity: 1, duration: 0.7, ease: 'power2.out' }
+    );
+  });
+
+  // Project cards: staggered scale-up
+  const projectCards = gsap.utils.toArray('.projects .project-card');
+  if (projectCards.length) {
+    gsap.fromTo(projectCards,
+      { scale: 0.9, opacity: 0 },
+      { scrollTrigger: { trigger: projectCards[0].parentElement, start: 'top 88%', toggleActions: 'play none none none' },
+        scale: 1, opacity: 1, duration: 0.65, stagger: 0.1, ease: 'back.out(1.5)' }
+    );
+  }
+
+  // Video cards: fly up with stagger
+  const videoCards = gsap.utils.toArray('.video-card');
+  if (videoCards.length) {
+    gsap.fromTo(videoCards,
+      { y: 70, opacity: 0 },
+      { scrollTrigger: { trigger: videoCards[0].parentElement, start: 'top 88%', toggleActions: 'play none none none' },
+        y: 0, opacity: 1, duration: 0.75, stagger: 0.15, ease: 'power3.out' }
+    );
+  }
+
+  // Research items: slide from left
+  gsap.utils.toArray('.research-item').forEach((el, i) => {
+    gsap.fromTo(el,
+      { x: -40, opacity: 0 },
+      { scrollTrigger: { trigger: el, start: 'top 91%', toggleActions: 'play none none none' },
+        x: 0, opacity: 1, duration: 0.6, delay: i * 0.08, ease: 'power2.out' }
+    );
+  });
+
+  // Teaching timeline items: slide from right
+  gsap.utils.toArray('.tl-item').forEach((el, i) => {
+    gsap.fromTo(el,
+      { x: 30, opacity: 0 },
+      { scrollTrigger: { trigger: el, start: 'top 91%', toggleActions: 'play none none none' },
+        x: 0, opacity: 1, duration: 0.5, delay: i * 0.1, ease: 'power2.out' }
+    );
+  });
+
+  // Education cards: slide up
+  gsap.utils.toArray('.edu-anim').forEach((el, i) => {
+    gsap.fromTo(el,
+      { y: 30, opacity: 0 },
+      { scrollTrigger: { trigger: el, start: 'top 92%', toggleActions: 'play none none none' },
+        y: 0, opacity: 1, duration: 0.55, delay: i * 0.12, ease: 'power2.out' }
+    );
+  });
+
+  // Skill bars: wipe in from left
+  gsap.utils.toArray('.skill-fill').forEach((bar) => {
+    const targetWidth = bar.style.width;
+    gsap.set(bar, { width: '0%', opacity: 0 });
+    ScrollTrigger.create({
+      trigger: bar,
+      start: 'top 93%',
+      once: true,
+      onEnter: () => gsap.to(bar, { width: targetWidth, opacity: 1, duration: 1.4, ease: 'power2.out' }),
+    });
+  });
+
+
+  // Footer: fade up
+  const footer = document.querySelector('footer');
+  if (footer) {
+    gsap.from(footer, {
+      scrollTrigger: { trigger: footer, start: 'top 95%', toggleActions: 'play none none none' },
+      y: 20, opacity: 0, duration: 0.8, ease: 'power2.out',
+    });
+  }
+}
+
+// ========================================
+// Stats Counter Animation
+// ========================================
+function animateCounters() {
+  document.querySelectorAll('.stat-number').forEach((el) => {
+    const target = parseInt(el.dataset.target, 10);
+    const showPlus = target >= 8;
+    const duration = 1800;
+    const startTime = performance.now();
+
+    function update(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      const val = Math.floor(eased * target);
+      el.textContent = progress < 1 ? val : (showPlus ? target + '+' : target);
+      if (progress < 1) requestAnimationFrame(update);
+    }
+
+    requestAnimationFrame(update);
+  });
+}
+
+// ========================================
+// Education Tab Filter
+// ========================================
+function initEducationTabs() {
+  const toggle = document.getElementById('courses-toggle');
+  const drawer = document.getElementById('courses-drawer');
+
+  if (toggle && drawer) {
+    const doToggle = () => {
+      const open = drawer.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+    };
+    toggle.addEventListener('click', doToggle);
+    toggle.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') doToggle(); });
+  }
+}
+
+// ========================================
+// Project Video Dropdowns
+// ========================================
+function initProjectDropdowns() {
+  document.querySelectorAll('.video-card').forEach((card) => {
+    const info = card.querySelector('.video-info');
+    if (!info) return;
+
+    const header = info.querySelector('.project-header');
+    const tag = header ? header.querySelector('.project-tag') : null;
+
+    // Details drawer: tag + everything else in info except the h3 title
+    const details = document.createElement('div');
+    details.className = 'proj-details proj-details-collapsed';
+
+    // Move tag into drawer first
+    if (tag) details.appendChild(tag);
+
+    // Move remaining info children (description, links) into drawer
+    Array.from(info.children).forEach((child) => {
+      if (child !== header) details.appendChild(child);
+    });
+    info.appendChild(details);
+
+    // Full-width colored bottom bar as toggle
+    const bar = document.createElement('button');
+    bar.className = 'proj-bar';
+    bar.setAttribute('aria-expanded', 'false');
+    bar.innerHTML = '<span class="proj-bar-arrow">▾</span>';
+    card.appendChild(bar);
+
+    const doToggle = () => {
+      const open = details.classList.toggle('proj-details-open');
+      details.classList.toggle('proj-details-collapsed', !open);
+      bar.setAttribute('aria-expanded', String(open));
+      bar.querySelector('.proj-bar-arrow').classList.toggle('open', open);
+    };
+
+    bar.addEventListener('click', doToggle);
+  });
+}
+
+// ========================================
+// VanillaTilt 3D Card Effect
+// ========================================
+function initVanillaTilt() {
+  if (typeof VanillaTilt === 'undefined') return;
+  if (window.matchMedia('(pointer: coarse)').matches) return; // skip touch devices
+
+  VanillaTilt.init(document.querySelectorAll('.block'), {
+    max: 10, speed: 400, glare: true, 'max-glare': 0.12, scale: 1.03, perspective: 900,
+  });
+  VanillaTilt.init(document.querySelectorAll('.project-card'), {
+    max: 8, speed: 400, glare: true, 'max-glare': 0.08, scale: 1.02, perspective: 1000,
+  });
+  VanillaTilt.init(document.querySelectorAll('.teaching-item'), {
+    max: 4, speed: 600, glare: false, scale: 1.01, perspective: 1500,
+  });
+}

@@ -6,16 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Ciro Zhang - Machine Learning Engineer working at the intersection of ML and embedded systems" />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-
   <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+
+<!-- Three.js Background Container -->
+<div id="three-bg"></div>
 
 <!-- Boot -->
 <div id="boot">
@@ -31,12 +29,39 @@
     </button>
   </div>
   <div class="nav-links">
-    <a href="#research">0x2000 /research</a>
-    <a href="#teaching">0x3000 /teaching</a>
-    <a href="#projects">0x4000 /projects</a>
-    <a href="#coursework">0x6000 /coursework</a>
+    <a href="#education">0x2000 /education</a>
+    <a href="#research">0x3000 /research</a>
+    <a href="#teaching">0x4000 /teaching</a>
+    <a href="#projects">0x5000 /projects</a>
+  </div>
+  <div class="nav-footer">
+    <button class="terminal-hint-btn" id="terminal-hint-btn">
+      <span class="terminal-hint-key">` </span>open terminal
+    </button>
   </div>
 </nav>
+
+<!-- Mobile Hamburger -->
+<button id="hamburger-btn" class="hamburger-btn" aria-label="Open menu">
+  <span></span><span></span><span></span>
+</button>
+
+<!-- Mobile Nav Overlay -->
+<div id="mobile-nav-overlay" class="mobile-nav-overlay">
+  <div class="mobile-nav-content">
+    <div class="mobile-nav-top">
+      <div class="mobile-nav-brand">ciro.dev</div>
+      <button id="mobile-nav-close" class="mobile-nav-close">×</button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="#education">0x2000 /education</a>
+      <a href="#research">0x3000 /research</a>
+      <a href="#teaching">0x4000 /teaching</a>
+      <a href="#projects">0x5000 /projects</a>
+      <a href="Resume.pdf" download>↓ /resume</a>
+    </div>
+  </div>
+</div>
 
 <!-- System Monitors -->
 <div class="system-monitors">
@@ -76,12 +101,12 @@
    ╚═════╝╚═╝╚═╝  ╚═╝ ╚═════╝
     </pre>
     <h1 class="reveal delay-2 glitch" id="name" data-text="Ciro Zhang">Ciro Zhang</h1>
-    <div class="ml-badge">ML Engineer</div>
+    <div class="ml-badge">SunbathingFish</div>
     <canvas id="neural-canvas" class="neural-network"></canvas>
     <canvas id="gradient-canvas" class="gradient-descent"></canvas>
   </div>
 
-  <p class="reveal delay-3" id="bio-description"></p>
+  <p class="reveal delay-3" id="bio-description">Data Science and Computer Engineering double major at UC San Diego. I build ML systems that solve real-world problems—from digital pathology pipelines to bioluminescence prediction models. Currently researching at UBC on computer vision for medical diagnostics and at UCSD on ecological time-series forecasting.</p>
 
   <div class="social-links reveal delay-3">
     <a href="https://github.com/CiroZhang" target="_blank" rel="noopener noreferrer" class="social-link">
@@ -92,10 +117,24 @@
       <span class="social-icon">in</span>
       <span class="social-label">LinkedIn</span>
     </a>
+    <a href="https://scholar.google.com/citations?hl=en&user=BTYAUvoAAAAJ&view_op=list_works&gmla=AH8HC4yrtWTxsb_TW18o4LNv2WHelyNJ1CJezitzT2RJZdE9tlVaI37ZhqKF-lk7sb2eKeMYo7vV2jWc8GgesXbO" target="_blank" rel="noopener noreferrer" class="social-link">
+      <span class="social-icon">GS</span>
+      <span class="social-label">Scholar</span>
+    </a>
     <a href="https://www.youtube.com/@cirozhang" target="_blank" rel="noopener noreferrer" class="social-link">
       <span class="social-icon">▶</span>
       <span class="social-label">YouTube</span>
     </a>
+  </div>
+
+  <!-- Active Processes -->
+  <div class="active-processes reveal delay-4">
+    <div class="active-processes-header">active_processes.log</div>
+    <div class="active-processes-list">
+      <div class="active-process-item" style="animation-delay:0.3s">Building CV/OCR pipelines for pathology textbook analysis at UBC (Dr. Li Xiaoxiao).</div>
+      <div class="active-process-item" style="animation-delay:0.45s">Combining EDM time-series models with CNNs for bioluminescence prediction at UCSD (Dr. George Sugihara).</div>
+      <div class="active-process-item" style="animation-delay:0.6s">Training YOLO models for cervical cancer cytology detection in digital pathology workflows.</div>
+    </div>
   </div>
 
   <!-- Floating Code Snippets -->
@@ -142,112 +181,329 @@
     </div>
   </div>
 
-  <h2 class="reveal delay-4">Focus <span class="mem-addr">0x0000</span></h2>
-  <div class="focus" id="focus-container"></div>
+  <h2 class="reveal delay-4" id="education">Education <span class="mem-addr">0x2000</span></h2>
+  <div class="edu-grid">
 
-  <h2 class="reveal delay-4">Tech Stack <span class="mem-addr">0x1000</span></h2>
-  <div class="tech-stack reveal delay-5">
-    <div class="tech-category">
-      <h3>ML/AI</h3>
-      <div class="skill-bar">
-        <div class="skill-fill" style="width: 95%; --skill-color: #8b5cf6;">
-          <span>PyTorch</span><span>95%</span>
-        </div>
-      </div>
-      <div class="skill-bar">
-        <div class="skill-fill" style="width: 90%; --skill-color: #8b5cf6;">
-          <span>TensorFlow</span><span>90%</span>
-        </div>
-      </div>
-      <div class="skill-bar">
-        <div class="skill-fill" style="width: 92%; --skill-color: #8b5cf6;">
-          <span>scikit-learn</span><span>92%</span>
+    <!-- Harvard Card -->
+    <div class="edu-card edu-anim">
+      <div class="edu-card-header">
+        <div class="edu-initial harvard-initial"><img src="assets/harvard.png" alt="Harvard" /></div>
+        <div class="edu-card-meta">
+          <h3>Harvard University</h3>
+          <p class="edu-degree">S.M. Data Science</p>
+          <p class="edu-dates">Incoming Fall 2026</p>
         </div>
       </div>
     </div>
 
-    <div class="tech-category">
-      <h3>Computer Vision</h3>
-      <div class="skill-bar">
-        <div class="skill-fill" style="width: 93%; --skill-color: #06b6d4;">
-          <span>OpenCV</span><span>93%</span>
+    <!-- UCSD Card -->
+    <div class="edu-card edu-anim">
+      <div class="edu-card-header">
+        <div class="edu-initial ucsd-initial"><img src="assets/UCSD.png" alt="UCSD" /></div>
+        <div class="edu-card-meta">
+          <h3>University of California, San Diego</h3>
+          <p class="edu-degree">B.S. Data Science &amp; Computer Engineering</p>
+          <p class="edu-dates">Sept 2022 – June 2026</p>
         </div>
       </div>
-      <div class="skill-bar">
-        <div class="skill-fill" style="width: 88%; --skill-color: #06b6d4;">
-          <span>YOLO</span><span>88%</span>
-        </div>
+      <div class="edu-capstone">
+        <span class="edu-capstone-label">Graduation Capstone</span>
+        <span class="edu-capstone-text">Communication Lower Bounds for Multi-Party Graph Traversal &nbsp;<a href="https://rybplayer.github.io/capstone/" target="_blank" rel="noopener noreferrer" class="edu-capstone-link">Site →</a></span>
       </div>
-      <div class="skill-bar">
-        <div class="skill-fill" style="width: 85%; --skill-color: #06b6d4;">
-          <span>OCR/Document AI</span><span>85%</span>
+      <!-- Coursework Dropdown -->
+      <div class="edu-courses-toggle" id="courses-toggle" role="button" tabindex="0" aria-expanded="false">
+        <span class="toggle-arrow">▾</span>
+      </div>
+      <div class="edu-courses-drawer" id="courses-drawer">
+        <div class="course-section">
+          <div class="course-section-label ml-label">Machine Learning</div>
+          <div class="course-row"><span class="course-code">DSC 140A</span><span class="course-name">Probabilistic Modeling</span></div>
+          <div class="course-row"><span class="course-code">DSC 140B</span><span class="course-name">Representation Learning</span></div>
+          <div class="course-row"><span class="course-code">CSE 151A</span><span class="course-name">Learning Algorithms</span></div>
+          <div class="course-row"><span class="course-code">CSE 151B</span><span class="course-name">Deep Learning</span></div>
+          <div class="course-row"><span class="course-code">CSE 152</span><span class="course-name">Computer Vision </span></div>
+          <div class="course-row"><span class="course-code">CSE 156</span><span class="course-name">Natural Language Processing</span></div>
+          <div class="course-row"><span class="course-code">CSE 158</span><span class="course-name">Recommender Systems and Web Mining</span></div>
+          <div class="course-row"><span class="course-code">CSE 190</span><span class="course-name">ML for Music and Audio</span></div>
+        </div>
+        <div class="course-section">
+          <div class="course-section-label algo-label">Algorithms</div>
+          <div class="course-row"><span class="course-code">CSE 100</span><span class="course-name">Advanced Data Structures</span></div>
+          <div class="course-row"><span class="course-code">CSE 101</span><span class="course-name">Design and Analysis of Algorithms</span></div>
+          <div class="course-row"><span class="course-code">CSE 105</span><span class="course-name">Theory of Computation</span></div>
+        </div>
+        <div class="course-section">
+          <div class="course-section-label sys-label">Computer Systems</div>
+          <div class="course-row"><span class="course-code">DSC 102</span><span class="course-name">Systems for Scalable Analytics</span></div>
+          <div class="course-row"><span class="course-code">CSE 120</span><span class="course-name">Computer Operating Systems</span></div>
+          <div class="course-row"><span class="course-code">CSE 140L</span><span class="course-name">Digital Systems</span></div>
+          <div class="course-row"><span class="course-code">CSE 141L</span><span class="course-name">Computer Architecture</span></div>
+          <div class="course-row"><span class="course-code">ECE 111</span><span class="course-name">Advanced Digital Design Project</span></div>
+        </div>
+        <div class="course-section">
+          <div class="course-section-label circ-label">Circuits &amp; Signals</div>
+          <div class="course-row"><span class="course-code">DSC 120</span><span class="course-name">Signal Processing for Data Analysis</span></div>
+          <div class="course-row"><span class="course-code">ECE 65</span><span class="course-name">Components and Circuits Laboratory</span></div>
+          <div class="course-row"><span class="course-code">ECE 101</span><span class="course-name">Linear Systems Fundamentals</span></div>
+          <div class="course-row"><span class="course-code">ECE 109</span><span class="course-name">Engineering Probability and Statistics</span></div>
+        </div>
+        <div class="course-section">
+          <div class="course-section-label ds-label">Data Science</div>
+          <div class="course-row"><span class="course-code">DSC 80</span><span class="course-name">The Practice and Application of Data Science</span></div>
+          <div class="course-row"><span class="course-code">DSC 100</span><span class="course-name">Data Management</span></div>
+          <div class="course-row"><span class="course-code">DSC 106</span><span class="course-name">Data Visualization</span></div>
+          <div class="course-row"><span class="course-code">MATH 183</span><span class="course-name">Statistical Methods</span></div>
+          <div class="course-row"><span class="course-code">MATH 189</span><span class="course-name">Exploratory Data Analysis and Inference</span></div>
+        </div>
+        <div class="course-section">
+          <div class="course-section-label swe-label">Software Engineering</div>
+          <div class="course-row"><span class="course-code">CSE 109</span><span class="course-name">Programming Contests</span></div>
+          <div class="course-row"><span class="course-code">CSE 110</span><span class="course-name">Software Engineering</span></div>
         </div>
       </div>
     </div>
 
-    <div class="tech-category">
-      <h3>Programming</h3>
-      <div class="skill-bar">
-        <div class="skill-fill" style="width: 97%; --skill-color: #10b981;">
-          <span>Python</span><span>97%</span>
-        </div>
-      </div>
-      <div class="skill-bar">
-        <div class="skill-fill" style="width: 85%; --skill-color: #10b981;">
-          <span>C/C++</span><span>85%</span>
-        </div>
-      </div>
-      <div class="skill-bar">
-        <div class="skill-fill" style="width: 88%; --skill-color: #10b981;">
-          <span>Java</span><span>88%</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="tech-category">
-      <h3>Systems</h3>
-      <div class="skill-bar">
-        <div class="skill-fill" style="width: 90%; --skill-color: #f59e0b;">
-          <span>Linux/Unix</span><span>90%</span>
-        </div>
-      </div>
-      <div class="skill-bar">
-        <div class="skill-fill" style="width: 82%; --skill-color: #f59e0b;">
-          <span>Docker</span><span>82%</span>
-        </div>
-      </div>
-      <div class="skill-bar">
-        <div class="skill-fill" style="width: 87%; --skill-color: #f59e0b;">
-          <span>Git</span><span>87%</span>
-        </div>
-      </div>
-    </div>
   </div>
 
-  <h2 class="reveal delay-4" id="research">Research <span class="mem-addr">0x2000</span></h2>
-  <div class="research-list" id="research-container"></div>
+  <h2 class="reveal delay-4" id="research">Research <span class="mem-addr">0x3000</span></h2>
+  <div class="research-list">
 
+    <div class="research-item gsap-card">
+      <div class="research-meta">
+        <span class="research-status active">Active</span>
+        <span class="research-date">June 2024 – Present</span>
+      </div>
+      <h3>ML for Digital Pathology</h3>
+      <p class="research-advisor">Advisor: Dr. Li Xiaoxiao • University of British Columbia</p>
+      <p>Building CV/OCR pipeline to extract figure–caption pairs from pathology textbooks for fine-tuning LLMs in diagnostic Q&amp;A. Automated cell-patch cropping in QuPath and trained YOLO models for cervical cancer cytology to detect abnormal cell regions.</p>
+    </div>
 
-  <h2 class="reveal delay-4" id="teaching">Teaching <span class="mem-addr">0x3000</span></h2>
-  <div class="teaching-list" id="teaching-container"></div>
+    <div class="research-item gsap-card">
+      <div class="research-meta">
+        <span class="research-status active">Active</span>
+        <span class="research-date">Jan 2025 – Present</span>
+      </div>
+      <h3>Bioluminescence Prediction with EDM + CNNs</h3>
+      <p class="research-advisor">Advisor: Dr. George Sugihara • UC San Diego</p>
+      <p>Predicting bioluminescent events on UCSD shores using empirical dynamic modeling (EDM). Co-authoring a manuscript on combining traditional EDM with modern CNNs to boost prediction accuracy. Designed an interactive web tool that visualizes real-time bioluminescence probabilities.</p>
+    </div>
 
+    <div class="research-item gsap-card">
+      <div class="research-meta">
+        <span class="research-status completed">Completed</span>
+        <span class="research-date">July 2024 – Sep 2024</span>
+      </div>
+      <h3>Charitable Donation Behavior Analysis</h3>
+      <p class="research-advisor">Advisor: Dr. Ma Jing Jing • Peking University</p>
+      <p>Developed web-scraping tools to extract user data from Tencent charity platforms. Performed statistical analysis to identify keywords and trends that drive higher donation rates.</p>
+    </div>
 
-  <h2 class="reveal delay-4" id="projects">Projects <span class="mem-addr">0x4000</span></h2>
-  <div class="video-gallery" id="personal-projects-container"></div>
+  </div>
 
-  <h2 class="reveal delay-4">Group Projects <span class="mem-addr">0x5000</span></h2>
-  <div class="projects" id="group-projects-container"></div>
+  <h2 class="reveal delay-4" id="teaching">Teaching <span class="mem-addr">0x4000</span></h2>
+  <div class="teaching-timeline">
 
-  <h2 class="reveal delay-4" id="coursework">Coursework <span class="mem-addr">0x6000</span></h2>
-  <div class="coursework reveal delay-5" id="coursework-container"></div>
+    <div class="tl-item gsap-card">
+      <div class="tl-dot active"></div>
+      <div class="tl-body">
+        <div class="tl-top">
+          <span class="tl-code">DSC 80</span>
+          <span class="tl-status active">Active</span>
+        </div>
+        <div class="tl-name">Practice and Application of Data Science</div>
+        <div class="tl-meta">
+          <span class="tl-role">Instructional Assistant</span>
+          <span class="tl-sep">·</span>
+          <span class="tl-dates">Sept 2025 – Present</span>
+          <span class="tl-sep">·</span>
+          <span class="tl-terms">1 term</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item gsap-card">
+      <div class="tl-dot"></div>
+      <div class="tl-body">
+        <div class="tl-top">
+          <span class="tl-code">CSE 151A</span>
+          <span class="tl-status">Completed</span>
+        </div>
+        <div class="tl-name">Machine Learning: Learning Algorithms</div>
+        <div class="tl-meta">
+          <span class="tl-role">Instructional Assistant</span>
+          <span class="tl-sep">·</span>
+          <span class="tl-dates">Mar 2025 – June 2025</span>
+          <span class="tl-sep">·</span>
+          <span class="tl-terms">1 term</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item gsap-card">
+      <div class="tl-dot"></div>
+      <div class="tl-body">
+        <div class="tl-top">
+          <span class="tl-code">DSC 10</span>
+          <span class="tl-status">Completed</span>
+        </div>
+        <div class="tl-name">Principles of Data Science</div>
+        <div class="tl-meta">
+          <span class="tl-role">Instructional Assistant</span>
+          <span class="tl-sep">·</span>
+          <span class="tl-dates">Sept 2023 – Mar 2025</span>
+          <span class="tl-sep">·</span>
+          <span class="tl-terms">5 terms</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <h2 class="reveal delay-4" id="projects">Group Projects <span class="mem-addr">0x5000</span></h2>
+  <div class="projects">
+
+    <div class="project-card gsap-card">
+      <div class="project-card-logo"><img src="assets/dsc10practice.png" alt="DSC10 Practice" /></div>
+      <div class="project-header">
+        <h3>DSC10 Practice Platform</h3>
+        <span class="project-tag">Python • Pandoc • BeautifulSoup • Educational Tool</span>
+      </div>
+      <p>Practice problem platform for UCSD's DSC 10 course hosting past exams and discussion materials. Built LaTeX-to-Markdown conversion tools and standardized problem formatting system. Supports multiple question types with 53+ contributors and 1,400+ commits.</p>
+      <div class="project-links">
+        <a href="https://github.com/dsc-courses/practice.dsc10.com" class="project-link">GitHub →</a>
+        <a href="https://practice.dsc10.com/" class="project-link">Visit Site →</a>
+      </div>
+    </div>
+
+    <div class="project-card gsap-card">
+      <div class="project-card-logo"><img src="assets/hkn.png" alt="HKN" /></div>
+      <div class="project-header">
+        <h3>HAB Forecasting: Harmful Algal Bloom Prediction</h3>
+        <span class="project-tag">Python • Ensemble ML • Oceanographic Data</span>
+      </div>
+      <p>Research project predicting harmful algal blooms at Scripps Pier using ensemble ML models (750 models). Multi-timeframe forecasting (1-3 weeks) with configurable thresholds and confidence intervals. Deployed live forecasting tool integrated with SCCOOS monitoring data.</p>
+      <div class="project-links">
+        <a href="https://github.com/aparaselli/HAB-Prediction-Research" class="project-link">GitHub →</a>
+        <a href="https://my-frontend-bucket-459820.storage.googleapis.com/index.html" class="project-link">Live Demo →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <h2 class="reveal delay-4">Personal Projects <span class="mem-addr">0x6000</span></h2>
+  <div class="video-gallery">
+
+    <div class="video-card gsap-card" data-index="0001">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/jjB-xDtmhq8" title="Paper Reader" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <div class="project-header">
+          <h3>Paper Reader: Document AI Pipeline</h3>
+          <span class="project-tag">Python • YOLO • PyMuPDF • BERT</span>
+        </div>
+        <p>Built a pipeline to convert research PDFs into structured Markdown/JSON datasets. Applied DocLayNet (YOLO) for layout detection and PyMuPDF for text/figure extraction. Reduced noise using regex + BERT-based filtering.</p>
+        <div class="project-links">
+          <a href="https://github.com/CiroZhang/paper_reader" class="project-link">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-card gsap-card" data-index="0002">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/x1i6cRyJ0fU" title="Gmail Replier" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <div class="project-header">
+          <h3>Gmail Replier: LLM Auto-Reply Bot</h3>
+          <span class="project-tag">Python • OpenAI API • Gmail API • OAuth</span>
+        </div>
+        <p>Python service that scans Gmail and drafts replies with OpenAI or Ollama, supporting dry-run and safe-prompt modes. Integrated Gmail API with OAuth, custom labels, and robust error-handling with exponential backoff.</p>
+        <div class="project-links">
+          <a href="https://github.com/CiroZhang/gmail_replier" class="project-link">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-card gsap-card" data-index="0003">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/zkjLWrAZbpU" title="Fish Game" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <div class="project-header">
+          <h3>Fish Game: HTML5 Jumping Game</h3>
+          <span class="project-tag">JavaScript • HTML5 Canvas</span>
+        </div>
+        <p>Browser-based jumping game built with vanilla JavaScript and HTML5 Canvas. Features custom physics engine, camera system, and procedurally generated environments. Deployed on GitHub Pages for instant play.</p>
+        <div class="project-links">
+          <a href="https://github.com/CiroZhang/jumping_game" class="project-link">GitHub →</a>
+          <a href="https://cirozhang.github.io/jumping_game/" class="project-link">Play Game →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-card gsap-card" data-index="0005">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/_-Iog7sBY0Y" title="Wiki-Graph-Explorer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <div class="project-header">
+          <h3>Wiki-Graph-Explorer: Wikipedia BFS Game</h3>
+          <span class="project-tag">Svelte • D3.js • Graph Algorithms</span>
+        </div>
+        <p>Interactive web app that visualizes paths between Wikipedia articles using BFS graph traversal. Built with Svelte and D3 for dynamic graph visualization. Includes data processing pipeline with Jupyter notebooks for Wikipedia article parsing.</p>
+        <div class="project-links">
+          <a href="https://github.com/TQZhang04/wikipedia-game-bfs" class="project-link">GitHub →</a>
+          <a href="https://tqzhang04.github.io/wikipedia-game-bfs/" class="project-link">Play Game →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-card gsap-card" data-index="0006">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/onHAY8Da6oI" title="Slice" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <div class="project-header">
+          <h3>Slice: Android Bill Splitting App</h3>
+          <span class="project-tag">Java • Android • Gradle</span>
+        </div>
+        <p>Android app for splitting bills among groups. Built with Java using Android Studio with 120+ commits. Features user-friendly interface for tracking expenses and calculating individual shares.</p>
+        <div class="project-links">
+          <a href="https://github.com/SunbathingFish/billSplit_app" class="project-link">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-card gsap-card" data-index="0007">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/v9uu0OD_uUM" title="OneTouch" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <div class="project-header">
+          <h3>OneTouch: Android Shortcut Widget</h3>
+          <span class="project-tag">Java • Android • Widgets</span>
+        </div>
+        <p>Android widget app providing quick shortcuts and one-tap actions. Built with Java for Android, featuring customizable widgets for improved productivity and quick access to frequently used functions.</p>
+        <div class="project-links">
+          <a href="https://github.com/SunbathingFish/WidgetApp" class="project-link">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
 
   <footer class="reveal delay-5">
     <div>kernel 6.0 · uptime <span id="uptime">0s</span> · faults 1</div>
-    <div>UCSD '26 · CE + DS · San Diego, CA</div>
+    <div>UCSD '26 · DS + CE → Harvard S.M. '27</div>
   </footer>
 </div>
 
-<!-- Scripts -->
+<!-- Scripts (local) -->
+<script src="lib/three.min.js"></script>
+<script src="lib/gsap.min.js"></script>
+<script src="lib/ScrollTrigger.min.js"></script>
+<script src="lib/vanilla-tilt.min.js"></script>
 <script src="script.js"></script>
 
 </body>
