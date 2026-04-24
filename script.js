@@ -1136,12 +1136,14 @@ pathology at UBC and bioluminescence prediction at UCSD.`;
   4. HAB Forecasting: Harmful Algal Bloom Prediction
   5. Wiki-Graph-Explorer: Wikipedia BFS Game
   6. Slice: Android Bill Splitting App
-  7. OneTouch: Android Shortcut Widget`;
+  7. OneTouch: Android Shortcut Widget
+  8. Custom 9-bit ISA CPU [NEW]
+  9. YouTube Audio Downloader [NEW]`;
     },
 
     skills: () => {
       return `Tech Stack:
-  Languages:   Python, Java, C, JavaScript, SQL
+  Languages:   Python, Java, C, JavaScript, SQL, SystemVerilog
   ML/AI:       PyTorch, TensorFlow, scikit-learn, YOLO
   CV/NLP:      OpenCV, transformers, BERT, OCR
   Tools:       Git, Docker, Linux, Jupyter, Android Studio
