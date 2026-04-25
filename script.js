@@ -34,7 +34,7 @@ function initBootSequence() {
     { text: "user@ciro.dev:~$ open /portfolio", delay: 0 },
     { text: "", delay: 200 },
     { text: "[ SEGFAULT ] page not in memory", delay: 400, class: "boot-loading" },
-    { text: "[ HANDLER ] mapping 0x7fff -> portfolio", delay: 600 },
+    { text: "[ HANDLER ] mapping to 0x7fff", delay: 600 },
     { text: "[ LOAD    ] allocating heap...", delay: 800, class: "boot-loading" },
     { text: "[ READY   ] process ready", delay: 1000, class: "boot-ok" }
   ];
@@ -173,17 +173,28 @@ function initNavInteraction() {
 
   navItems.forEach((item) => {
     item.addEventListener("click", (e) => {
-      // Add ripple effect
       createRipple(item);
-
-      // Smooth scroll is already handled by initSmoothScroll
-      // Visual feedback
       item.style.transform = "scale(0.95)";
-      setTimeout(() => {
-        item.style.transform = "";
-      }, 150);
+      setTimeout(() => { item.style.transform = ""; }, 150);
     });
   });
+
+  // Active section highlight on scroll
+  const sectionIds = ['education', 'experiences', 'teaching', 'publications', 'projects'];
+  const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navItems.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === `#${id}`);
+        });
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+
+  sections.forEach(s => observer.observe(s));
 }
 
 // ========================================
@@ -345,10 +356,8 @@ function initSmoothScroll() {
       e.preventDefault();
       const target = document.querySelector(this.getAttribute("href"));
       if (target) {
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
+        const top = target.getBoundingClientRect().top + window.pageYOffset - 40;
+        window.scrollTo({ top, behavior: "smooth" });
       }
     });
   });
@@ -466,8 +475,8 @@ function initThemeToggle() {
   const themeIcon = themeToggle.querySelector('.theme-icon');
   const html = document.documentElement;
 
-  // Load saved theme or default to dark
-  const savedTheme = localStorage.getItem('theme') || 'dark';
+  // Load saved theme or default to light
+  const savedTheme = localStorage.getItem('theme') || 'light';
   html.setAttribute('data-theme', savedTheme);
   updateThemeIcon(savedTheme, themeIcon);
 
@@ -974,7 +983,7 @@ function showRecoveryTerminal() {
     { text: 'root@ciro.dev:~$ kill -9 1337', delay: 350 },
     { text: '[  OK  ] Terminated malicious process', delay: 500, class: 'success' },
     { text: '', delay: 600 },
-    { text: 'root@ciro.dev:~$ systemctl restart portfolio.service', delay: 700 },
+    { text: 'root@ciro.dev:~$ systemctl restart', delay: 700 },
     { text: '[  OK  ] Restoring system state...', delay: 850, class: 'success' },
     { text: '[  OK  ] Reloading page components...', delay: 1000, class: 'success' },
     { text: '', delay: 1150 },
@@ -1107,54 +1116,29 @@ function initTerminal() {
       return `Available commands:
   help       - Show this help message
   about      - About Ciro
-  projects   - List all projects
-  skills     - Show technical skills
   contact    - Get contact information
   clear      - Clear terminal
-  matrix     - Enable Matrix mode
   hack       - ???
-  ls         - List directory contents
-  whoami     - Display current user
-  uname      - System information`;
+  game       - Play a game`;
     },
 
     about: () => {
       return `Ciro Zhang
-Data Science & Computer Engineering @ UCSD
-GPA: 3.96 | Class of 2026
+B.S. Data Science & CE @ UCSD '26 → S.M. Data Science @ Harvard
 
-Building ML systems at the intersection of computer vision,
-NLP, and embedded systems. Currently researching digital
-pathology at UBC and bioluminescence prediction at UCSD.`;
-    },
-
-    projects: () => {
-      return `Projects:
-  1. Paper Reader: Document AI Pipeline
-  2. Gmail Replier: LLM Auto-Reply Bot
-  3. Fish Game: HTML5 Jumping Game
-  4. HAB Forecasting: Harmful Algal Bloom Prediction
-  5. Wiki-Graph-Explorer: Wikipedia BFS Game
-  6. Slice: Android Bill Splitting App
-  7. OneTouch: Android Shortcut Widget
-  8. Custom 9-bit ISA CPU [NEW]
-  9. YouTube Audio Downloader [NEW]`;
-    },
-
-    skills: () => {
-      return `Tech Stack:
-  Languages:   Python, Java, C, JavaScript, SQL, SystemVerilog
-  ML/AI:       PyTorch, TensorFlow, scikit-learn, YOLO
-  CV/NLP:      OpenCV, transformers, BERT, OCR
-  Tools:       Git, Docker, Linux, Jupyter, Android Studio
-  Data:        pandas, NumPy, matplotlib, Spark`;
+Building ML systems for real-world problems — generative AI
+for gene function prediction, bioluminescence forecasting,
+and computational pathology. Published in Annals of
+Diagnostic Pathology. TAed 600+ students across ML and
+data science courses at UCSD.`;
     },
 
     contact: () => {
       return `Contact Information:
-  Email:    ciro@ucsd.edu
+  Email:    cirozhang@g.harvard.edu
   GitHub:   github.com/CiroZhang
-  Location: San Diego, CA
+  LinkedIn: linkedin.com/in/ciro-zhang
+  Location: San Diego, CA → Cambridge, MA (Fall 2026)
 
   Reach out for research, projects, or opportunities!`;
     },
@@ -1162,12 +1146,6 @@ pathology at UBC and bioluminescence prediction at UCSD.`;
     clear: () => {
       body.innerHTML = '';
       return null;
-    },
-
-    matrix: () => {
-      document.body.classList.add('matrix-mode');
-      setTimeout(() => document.body.classList.remove('matrix-mode'), 5000);
-      return 'Matrix mode activated for 5 seconds...';
     },
 
     hack: () => {
@@ -1186,17 +1164,77 @@ pathology at UBC and bioluminescence prediction at UCSD.`;
       return null;
     },
 
-    ls: () => {
-      return `projects/  research/  teaching/  coursework/  skills/  contact/`;
+    game: () => {
+      const W = 55;
+      const PX = 6;
+      let py = 2;
+      let jumping = false;
+      let jf = 0;
+      let obs = [];
+      let frame = 0;
+      let score = 0;
+      let dead = false;
+      let interval;
+
+      const gameEl = document.createElement('pre');
+      gameEl.style.cssText = 'color:#f4f4f5;font-family:"JetBrains Mono",monospace;font-size:13px;line-height:1.4;margin:8px 0;user-select:none;';
+      body.appendChild(gameEl);
+
+      function render() {
+        const rows = [Array(W).fill(' '), Array(W).fill(' '), Array(W).fill('─')];
+        const sc = `score:${score}`;
+        for (let i = 0; i < sc.length; i++) rows[0][W - sc.length - 1 + i] = sc[i];
+        rows[py][PX] = 'o';
+        obs.forEach(x => {
+          if (x >= 0 && x < W) { rows[1][x] = '|'; rows[2][x] = '|'; }
+        });
+        gameEl.textContent = rows.map(r => r.join('')).join('\n');
+      }
+
+      function tick() {
+        frame++;
+        score = Math.floor(frame / 8);
+        if (jumping) {
+          jf++;
+          if (jf <= 5) py = 1;
+          else if (jf <= 10) py = 0;
+          else if (jf <= 15) py = 1;
+          else { py = 2; jumping = false; jf = 0; }
+        }
+        obs = obs.map(x => x - 1).filter(x => x >= 0);
+        const rate = Math.max(20, 50 - Math.floor(score / 3));
+        if (frame % rate === 0) obs.push(W - 1);
+        if (obs.some(x => x === PX) && py === 2) {
+          dead = true;
+          clearInterval(interval);
+          document.removeEventListener('keydown', onKey);
+          render();
+          gameEl.textContent += `\n\n  ── GAME OVER ──  score:${score}\n  type 'game' to play again`;
+          return;
+        }
+        render();
+      }
+
+      function onKey(e) {
+        if ((e.code === 'Space' || e.code === 'ArrowUp') && !jumping && !dead) {
+          e.preventDefault();
+          jumping = true;
+          jf = 0;
+        }
+        if (e.key === 'Escape' && !dead) {
+          dead = true;
+          clearInterval(interval);
+          document.removeEventListener('keydown', onKey);
+          addTerminalLine('  game ended. score: ' + score);
+        }
+      }
+
+      document.addEventListener('keydown', onKey);
+      render();
+      interval = setInterval(tick, 80);
+      return 'SPACE / ↑ to jump · ESC to quit';
     },
 
-    whoami: () => {
-      return 'guest';
-    },
-
-    uname: () => {
-      return 'NeuralOS 4.2.1 (ARM64) - Built on Linux kernel 6.0';
-    },
   };
 
   function addTerminalLine(text, className = '') {

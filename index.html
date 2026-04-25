@@ -30,10 +30,10 @@
   </div>
   <div class="nav-links">
     <a href="#education">0x2000 /education</a>
-    <a href="#research">0x3000 /research</a>
+    <a href="#experiences">0x3000 /experiences</a>
     <a href="#teaching">0x4000 /teaching</a>
+    <a href="#publications">0x4500 /publications</a>
     <a href="#projects">0x5000 /projects</a>
-    <a href="#personal-projects">0x6000 /personal</a>
   </div>
   <div class="nav-footer">
     <button class="terminal-hint-btn" id="terminal-hint-btn">
@@ -56,10 +56,10 @@
     </div>
     <div class="mobile-nav-links">
       <a href="#education">0x2000 /education</a>
-      <a href="#research">0x3000 /research</a>
+      <a href="#experiences">0x3000 /experiences</a>
       <a href="#teaching">0x4000 /teaching</a>
-      <a href="#projects">0x5000 /projects</a>
-      <a href="#personal-projects">0x6000 /personal</a>
+      <a href="#publications">0x4500 /publications</a>
+    <a href="#projects">0x5000 /projects</a>
       <a href="Resume.pdf" download>↓ /resume</a>
     </div>
   </div>
@@ -108,8 +108,9 @@
     <canvas id="gradient-canvas" class="gradient-descent"></canvas>
   </div>
 
-  <p class="reveal delay-3" id="bio-description">Data Science and Computer Engineering double major at UC San Diego. I build ML systems that solve real-world problems—from digital pathology pipelines to bioluminescence prediction models. Currently researching at UBC on computer vision for medical diagnostics and at UCSD on ecological time-series forecasting.</p>
-
+<p class="reveal delay-3" id="bio-description">
+Hi! I’m Ciro Zhang, a recent UCSD grad (B.S. Data Science & Computer Engineering) heading to Harvard for my S.M. in Data Science this fall. I build machine learning systems that tackle real-world problems — from generative AI for gene function prediction to bioluminescence forecasting on the California coast. I also have a published paper in computational pathology and have TAed 600+ students across ML and data science courses.
+</p>
   <div class="social-links reveal delay-3">
     <a href="https://github.com/CiroZhang" target="_blank" rel="noopener noreferrer" class="social-link">
       <span class="social-icon">⟨/⟩</span>
@@ -127,17 +128,21 @@
       <span class="social-icon">▶</span>
       <span class="social-label">YouTube</span>
     </a>
+    <a href="mailto:cirozhang@g.harvard.edu" class="social-link">
+      <span class="social-icon">@</span>
+      <span class="social-label">Email</span>
+    </a>
   </div>
 
   <!-- Active Processes -->
-  <div class="active-processes reveal delay-4">
+  <!-- <div class="active-processes reveal delay-4">
     <div class="active-processes-header">active_processes.log</div>
     <div class="active-processes-list">
       <div class="active-process-item" style="animation-delay:0.3s">Building CV/OCR pipelines for pathology textbook analysis at UBC (Dr. Li Xiaoxiao).</div>
       <div class="active-process-item" style="animation-delay:0.45s">Combining EDM time-series models with CNNs for bioluminescence prediction at UCSD (Dr. George Sugihara).</div>
       <div class="active-process-item" style="animation-delay:0.6s">Training YOLO models for cervical cancer cytology detection in digital pathology workflows.</div>
     </div>
-  </div>
+  </div> -->
 
   <!-- Floating Code Snippets -->
   <div class="code-snippets" id="code-snippets"></div>
@@ -188,6 +193,7 @@
 
     <!-- Harvard Card -->
     <div class="edu-card edu-anim">
+      <div class="tl-dot active"></div>
       <div class="edu-card-header">
         <div class="edu-initial harvard-initial"><img src="assets/harvard.png" alt="Harvard" /></div>
         <div class="edu-card-meta">
@@ -200,104 +206,152 @@
 
     <!-- UCSD Card -->
     <div class="edu-card edu-anim">
+      <div class="tl-dot active"></div>
       <div class="edu-card-header">
         <div class="edu-initial ucsd-initial"><img src="assets/UCSD.png" alt="UCSD" /></div>
         <div class="edu-card-meta">
-          <h3>University of California, San Diego</h3>
+          <h3>UC San Diego</h3>
           <p class="edu-degree">B.S. Data Science &amp; Computer Engineering</p>
           <p class="edu-dates">Sept 2022 – June 2026</p>
         </div>
       </div>
-      <div class="edu-capstone">
-        <span class="edu-capstone-label">Graduation Capstone</span>
-        <span class="edu-capstone-text">Communication Lower Bounds for Multi-Party Graph Traversal &nbsp;<a href="https://rybplayer.github.io/capstone/" target="_blank" rel="noopener noreferrer" class="edu-capstone-link">Site →</a></span>
+      <div class="edu-courses-drawer" id="courses-drawer">
+        <div class="edu-capstone">
+          <span class="edu-capstone-label">Senior Capstone</span>
+          <span class="edu-capstone-text">Communication Lower Bounds for Multi-Party Graph Traversal (Advisor: Dr. Shachar Lovett) &nbsp;<a href="https://rybplayer.github.io/capstone/" target="_blank" rel="noopener noreferrer" class="edu-capstone-link">Site →</a></span>
+        </div>
+        <div class="edu-capstone">
+          <span class="edu-capstone-label">Honor Society</span>
+          <span class="edu-capstone-text">IEEE-HKN Eta Kappa Nu at UCSD  (Kappa Psi Chapter) </span>
+        </div>
+        <div class="edu-drawer-section-label">Coursework</div>
+        <div class="courses-cols">
+          <div class="courses-col">
+            <div class="course-section">
+              <div class="course-section-label ml-label">Machine Learning</div>
+              <div class="course-row"><span class="course-code">DSC 140A</span><span class="course-name">Probabilistic Modeling and Machine Learning</span></div>
+              <div class="course-row"><span class="course-code">DSC 140B</span><span class="course-name">Representation Learning</span></div>
+              <div class="course-row"><span class="course-code">CSE 151A</span><span class="course-name">Learning Algorithms</span></div>
+              <div class="course-row"><span class="course-code">CSE 151B</span><span class="course-name">Deep Learning</span></div>
+              <div class="course-row"><span class="course-code">CSE 152A</span><span class="course-name">Computer Vision</span></div>
+              <div class="course-row"><span class="course-code">CSE 156</span><span class="course-name">Natural Language Processing</span></div>
+              <div class="course-row"><span class="course-code">CSE 158</span><span class="course-name">Recommender Systems and Web Mining</span></div>
+              <div class="course-row"><span class="course-code">CSE 190</span><span class="course-name">Machine Learning for Music and Audio</span></div>
+            </div>
+            <div class="course-section">
+              <div class="course-section-label ds-label">Data Science</div>
+              <div class="course-row"><span class="course-code">DSC 40AB</span><span class="course-name">Theoretical Foundations of Data Science</span></div>
+              <div class="course-row"><span class="course-code">DSC 80</span><span class="course-name">Practice and Application of Data Science</span></div>
+              <div class="course-row"><span class="course-code">DSC 100</span><span class="course-name">Data Management</span></div>
+              <div class="course-row"><span class="course-code">DSC 102</span><span class="course-name">Systems for Scalable Analytics</span></div>
+              <div class="course-row"><span class="course-code">DSC 106</span><span class="course-name">Data Visualization</span></div>
+              <div class="course-row"><span class="course-code">DSC 120</span><span class="course-name">Signal Processing for Data Analysis</span></div>
+            </div>
+            <div class="course-section">
+              <div class="course-section-label math-label">Statistics</div>
+              <div class="course-row"><span class="course-code">MATH 183</span><span class="course-name">Statistical Methods</span></div>
+              <div class="course-row"><span class="course-code">MATH 189</span><span class="course-name">Exploratory Data Analysis and Inference</span></div>
+            </div>
+          </div>
+          
+          <div class="courses-col">
+            <div class="course-section">
+              <div class="course-section-label algo-label">Algorithms &amp; Theory</div>
+              <div class="course-row"><span class="course-code">CSE 20</span><span class="course-name">Discrete Mathematics</span></div>
+              <div class="course-row"><span class="course-code">CSE 100</span><span class="course-name">Advanced Data Structures</span></div>
+              <div class="course-row"><span class="course-code">CSE 101</span><span class="course-name">Design and Analysis of Algorithms</span></div>
+              <div class="course-row"><span class="course-code">CSE 105</span><span class="course-name">Theory of Computation</span></div>
+            </div>
+            <div class="course-section">
+              <div class="course-section-label sys-label">Computer Systems</div>
+              <div class="course-row"><span class="course-code">CSE 30</span><span class="course-name">Computer Organization and Systems Programming</span></div>
+              <div class="course-row"><span class="course-code">CSE 120</span><span class="course-name">Principles of Computer Operating Systems</span></div>
+              <div class="course-row"><span class="course-code">CSE 140L</span><span class="course-name">Digital Systems</span></div>
+              <div class="course-row"><span class="course-code">CSE 141L</span><span class="course-name">Computer Architecture</span></div>
+              <div class="course-row"><span class="course-code">ECE 111</span><span class="course-name">Advanced Digital Design Project</span></div>
+            </div>
+            <div class="course-section">
+              <div class="course-section-label circ-label">Circuits &amp; Signals</div>
+              <div class="course-row"><span class="course-code">ECE 35</span><span class="course-name">Introduction to Analog Design</span></div>
+              <div class="course-row"><span class="course-code">ECE 45</span><span class="course-name">Circuits and Systems</span></div>
+              <div class="course-row"><span class="course-code">ECE 65</span><span class="course-name">Components and Circuits Laboratory</span></div>
+              <div class="course-row"><span class="course-code">ECE 101</span><span class="course-name">Linear Systems Fundamentals</span></div>
+              <div class="course-row"><span class="course-code">ECE 109</span><span class="course-name">Engineering Probability and Statistics</span></div>
+            </div>
+            <div class="course-section">
+              <div class="course-section-label swe-label">Software Engineering</div>
+              <div class="course-row"><span class="course-code">CSE 15L</span><span class="course-name">Software Tools and Techniques Laboratory</span></div>
+              <div class="course-row"><span class="course-code">CSE 109</span><span class="course-name">Programming Contests</span></div>
+              <div class="course-row"><span class="course-code">CSE 110</span><span class="course-name">Software Engineering</span></div>
+            </div>
+          </div>
+        </div>
       </div>
       <!-- Coursework Dropdown -->
       <div class="edu-courses-toggle" id="courses-toggle" role="button" tabindex="0" aria-expanded="false">
         <span class="toggle-arrow">▾</span>
       </div>
-      <div class="edu-courses-drawer" id="courses-drawer">
-        <div class="course-section">
-          <div class="course-section-label ml-label">Machine Learning</div>
-          <div class="course-row"><span class="course-code">DSC 140A</span><span class="course-name">Probabilistic Modeling</span></div>
-          <div class="course-row"><span class="course-code">DSC 140B</span><span class="course-name">Representation Learning</span></div>
-          <div class="course-row"><span class="course-code">CSE 151A</span><span class="course-name">Learning Algorithms</span></div>
-          <div class="course-row"><span class="course-code">CSE 151B</span><span class="course-name">Deep Learning</span></div>
-          <div class="course-row"><span class="course-code">CSE 152</span><span class="course-name">Computer Vision </span></div>
-          <div class="course-row"><span class="course-code">CSE 156</span><span class="course-name">Natural Language Processing</span></div>
-          <div class="course-row"><span class="course-code">CSE 158</span><span class="course-name">Recommender Systems and Web Mining</span></div>
-          <div class="course-row"><span class="course-code">CSE 190</span><span class="course-name">ML for Music and Audio</span></div>
-        </div>
-        <div class="course-section">
-          <div class="course-section-label algo-label">Algorithms</div>
-          <div class="course-row"><span class="course-code">CSE 100</span><span class="course-name">Advanced Data Structures</span></div>
-          <div class="course-row"><span class="course-code">CSE 101</span><span class="course-name">Design and Analysis of Algorithms</span></div>
-          <div class="course-row"><span class="course-code">CSE 105</span><span class="course-name">Theory of Computation</span></div>
-        </div>
-        <div class="course-section">
-          <div class="course-section-label sys-label">Computer Systems</div>
-          <div class="course-row"><span class="course-code">DSC 102</span><span class="course-name">Systems for Scalable Analytics</span></div>
-          <div class="course-row"><span class="course-code">CSE 120</span><span class="course-name">Computer Operating Systems</span></div>
-          <div class="course-row"><span class="course-code">CSE 140L</span><span class="course-name">Digital Systems</span></div>
-          <div class="course-row"><span class="course-code">CSE 141L</span><span class="course-name">Computer Architecture</span></div>
-          <div class="course-row"><span class="course-code">ECE 111</span><span class="course-name">Advanced Digital Design Project</span></div>
-        </div>
-        <div class="course-section">
-          <div class="course-section-label circ-label">Circuits &amp; Signals</div>
-          <div class="course-row"><span class="course-code">DSC 120</span><span class="course-name">Signal Processing for Data Analysis</span></div>
-          <div class="course-row"><span class="course-code">ECE 65</span><span class="course-name">Components and Circuits Laboratory</span></div>
-          <div class="course-row"><span class="course-code">ECE 101</span><span class="course-name">Linear Systems Fundamentals</span></div>
-          <div class="course-row"><span class="course-code">ECE 109</span><span class="course-name">Engineering Probability and Statistics</span></div>
-        </div>
-        <div class="course-section">
-          <div class="course-section-label ds-label">Data Science</div>
-          <div class="course-row"><span class="course-code">DSC 80</span><span class="course-name">The Practice and Application of Data Science</span></div>
-          <div class="course-row"><span class="course-code">DSC 100</span><span class="course-name">Data Management</span></div>
-          <div class="course-row"><span class="course-code">DSC 106</span><span class="course-name">Data Visualization</span></div>
-          <div class="course-row"><span class="course-code">MATH 183</span><span class="course-name">Statistical Methods</span></div>
-          <div class="course-row"><span class="course-code">MATH 189</span><span class="course-name">Exploratory Data Analysis and Inference</span></div>
-        </div>
-        <div class="course-section">
-          <div class="course-section-label swe-label">Software Engineering</div>
-          <div class="course-row"><span class="course-code">CSE 109</span><span class="course-name">Programming Contests</span></div>
-          <div class="course-row"><span class="course-code">CSE 110</span><span class="course-name">Software Engineering</span></div>
-        </div>
-      </div>
     </div>
 
   </div>
 
-  <h2 class="reveal delay-4" id="research">Research <span class="mem-addr">0x3000</span></h2>
+  <h2 class="reveal delay-4" id="experiences">Experiences <span class="mem-addr">0x3000</span></h2>
   <div class="research-list">
 
     <div class="research-item gsap-card">
+      <div class="tl-dot active"></div>
       <div class="research-meta">
         <span class="research-status active">Active</span>
-        <span class="research-date">June 2024 – Present</span>
+        <span class="research-date">Dec 2025 – Present</span>
       </div>
-      <h3>ML for Digital Pathology</h3>
-      <p class="research-advisor">Advisor: Dr. Li Xiaoxiao • University of British Columbia</p>
-      <p>Building CV/OCR pipeline to extract figure–caption pairs from pathology textbooks for fine-tuning LLMs in diagnostic Q&amp;A. Automated cell-patch cropping in QuPath and trained YOLO models for cervical cancer cytology to detect abnormal cell regions.</p>
+      <a href="https://ece.ucsd.edu" target="_blank" rel="noopener noreferrer" class="research-logo"><img src="assets/ucsdECE.png" alt="UCSD ECE" /></a>
+      <h3>GenAI Researcher</h3>
+      <p class="research-advisor">Electrical &amp; Computer Engineering · UC San Diego (Advisor: Dr. Pengtao Xie)</p>
+      <p>Developing GeneChat, a multimodal LLM that generates interpretable gene explanations from DNA sequences. The model uses a hybrid DNABERT + Vicuna-13B architecture trained on 100k+ gene sequences on A100 GPUs, and is benchmarked against GPT-4o, LLaMA 3, and Gemini on gene function prediction tasks.</p>
     </div>
 
     <div class="research-item gsap-card">
+      <div class="tl-dot"></div>
       <div class="research-meta">
-        <span class="research-status active">Active</span>
-        <span class="research-date">Jan 2025 – Present</span>
+        <span class="research-date">Jan 2025 – Jan 2026</span>
       </div>
-      <h3>Bioluminescence Prediction with EDM + CNNs</h3>
-      <p class="research-advisor">Advisor: Dr. George Sugihara • UC San Diego</p>
-      <p>Predicting bioluminescent events on UCSD shores using empirical dynamic modeling (EDM). Co-authoring a manuscript on combining traditional EDM with modern CNNs to boost prediction accuracy. Designed an interactive web tool that visualizes real-time bioluminescence probabilities.</p>
+      <a href="https://scripps.ucsd.edu" target="_blank" rel="noopener noreferrer" class="research-logo"><img src="assets/scrips.png" alt="Scripps" /></a>
+      <h3>ML Researcher</h3>
+      <p class="research-advisor">Scripps Institution of Oceanography · UC San Diego (Advisor: Dr. George Sugihara)</p>
+      <p>Developed EDM-LSTM, a hybrid model combining empirical dynamic modeling with LSTM for ocean bioluminescence forecasting. Trained on 1,000+ weeks of San Diego ocean data and achieved a 23% AUC improvement over standalone EDM and LSTM baselines.</p>
     </div>
 
     <div class="research-item gsap-card">
+      <div class="tl-dot"></div>
       <div class="research-meta">
-        <span class="research-status completed">Completed</span>
-        <span class="research-date">July 2024 – Sep 2024</span>
+        <span class="research-date">Jun 2025 – Sept 2025</span>
       </div>
-      <h3>Charitable Donation Behavior Analysis</h3>
-      <p class="research-advisor">Advisor: Dr. Ma Jing Jing • Peking University</p>
-      <p>Developed web-scraping tools to extract user data from Tencent charity platforms. Performed statistical analysis to identify keywords and trends that drive higher donation rates.</p>
+      <a href="https://www.bccancer.bc.ca" target="_blank" rel="noopener noreferrer" class="research-logo"><img src="assets/bccancer.png" alt="BC Cancer" /></a>
+      <h3>Data Engineering Intern</h3>
+      <p class="research-advisor">BC Cancer Agency</p>
+      <p>Worked on bioinformatics data pipelines, writing Groovy automation scripts inside Nextflow to preprocess cellular and gene expression datasets. Built Python tooling to detect and fix formatting issues across large experimental files, and used QuPath pipelines to extract quantitative features from cell imaging data.</p>
+    </div>
+
+    <div class="research-item gsap-card">
+      <div class="tl-dot"></div>
+      <div class="research-meta">
+        <span class="research-date">Jun 2024 – Jun 2025</span>
+      </div>
+      <a href="https://tea.ece.ubc.ca/s" target="_blank" rel="noopener noreferrer" class="research-logo"><img src="assets/teaLab.jpg" alt="Tea Labs" /></a>
+      <h3>CV Researcher</h3>
+      <p class="research-advisor">Tea Labs · University of British Columbia (Advisor: Dr. Li Xiaoxiao)</p>
+      <p>Built CV pipelines for whole-slide imaging (WSI) pathology analysis using YOLO. Designed a multi-stage slide processing pipeline covering blur/edge filtering, patch extraction, and parallel GPU inference. Also developed semi-supervised dataset pipelines to scale model training despite limited expert annotations.</p>
+    </div>
+
+    <div class="research-item gsap-card">
+      <div class="tl-dot"></div>
+      <div class="research-meta">
+        <span class="research-date">Jul 2024 – Sept 2024</span>
+      </div>
+      <a href="https://bimba.gsm.pku.edu.cn" target="_blank" rel="noopener noreferrer" class="research-logo"><img src="assets/bimba.jpg" alt="BiMBA PKU" /></a>
+      <h3>Research Intern</h3>
+      <p class="research-advisor">BiMBA · Peking University (Advisor: Dr. Ma Jingjing)</p>
+      <p>Built an automated pipeline to scrape and analyze trending keywords from Tencent platforms, studying factors that drive online charitable donations. Integrated LLM APIs to generate structured trend reports and automatically publish findings to Feishu Sheets.</p>
     </div>
 
   </div>
@@ -309,7 +363,7 @@
       <div class="tl-dot active"></div>
       <div class="tl-body">
         <div class="tl-top">
-          <span class="tl-code">DSC 80</span>
+          <a href="https://dsc-courses.github.io/dsc80-2026-wi/" target="_blank" rel="noopener noreferrer" class="tl-code">DSC 80</a>
           <span class="tl-status active">Active</span>
         </div>
         <div class="tl-name">Practice and Application of Data Science</div>
@@ -327,8 +381,7 @@
       <div class="tl-dot"></div>
       <div class="tl-body">
         <div class="tl-top">
-          <span class="tl-code">CSE 151A</span>
-          <span class="tl-status">Completed</span>
+          <a href="https://cseweb.ucsd.edu/~dasgupta/151/index.html" target="_blank" rel="noopener noreferrer" class="tl-code">CSE 151A</a>
         </div>
         <div class="tl-name">Machine Learning: Learning Algorithms</div>
         <div class="tl-meta">
@@ -345,8 +398,7 @@
       <div class="tl-dot"></div>
       <div class="tl-body">
         <div class="tl-top">
-          <span class="tl-code">DSC 10</span>
-          <span class="tl-status">Completed</span>
+          <a href="https://dsc-courses.github.io/dsc10-2023-fa/" target="_blank" rel="noopener noreferrer" class="tl-code">DSC 10</a>
         </div>
         <div class="tl-name">Principles of Data Science</div>
         <div class="tl-meta">
@@ -361,7 +413,26 @@
 
   </div>
 
-  <h2 class="reveal delay-4" id="projects">Group Projects <span class="mem-addr">0x5000</span></h2>
+  <h2 class="reveal delay-4" id="publications">Publications <span class="mem-addr">0x4500</span></h2>
+  <div class="research-list">
+
+    <div class="research-item gsap-card">
+      <div class="tl-dot"></div>
+      <div class="research-meta">
+        <span class="research-date">2022</span>
+        <span class="research-status" style="background:rgba(6,182,212,0.15);color:var(--accent-secondary);border:1px solid var(--accent-secondary);">12 citations</span>
+      </div>
+      <h3>Histological subtype is associated with PD-L1 expression and CD8+ T-cell infiltrates in triple-negative breast carcinoma</h3>
+      <p class="research-advisor">Annals of Diagnostic Pathology · Salisbury T, Abozina A, <strong>Zhang C</strong>, Mao E, Banyi N, Leo J, Ionescu D, Zhou C, Wang G</p>
+      <p>Investigated the relationship between tumor histological subtypes and immune markers (PD-L1 expression, CD8+ T-cell infiltration) across 72 triple-negative breast carcinoma cases, identifying subtype-specific patterns with implications for immunotherapy response prediction.</p>
+      <div class="project-links" style="margin-top:12px;">
+        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=BTYAUvoAAAAJ&citation_for_view=BTYAUvoAAAAJ:u5HHmVD_uO8C" target="_blank" rel="noopener noreferrer" class="project-link">Google Scholar →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <h2 class="reveal delay-4" id="projects">Bigger Group Projects <span class="mem-addr">0x5000</span></h2>
   <div class="projects">
 
     <div class="project-card gsap-card">
@@ -370,9 +441,8 @@
         <h3>DSC10 Practice Platform</h3>
         <span class="project-tag">Python • Pandoc • BeautifulSoup • Educational Tool</span>
       </div>
-      <p>Practice problem platform for UCSD's DSC 10 course hosting past exams and discussion materials. Built LaTeX-to-Markdown conversion tools and standardized problem formatting system. Supports multiple question types with 53+ contributors and 1,400+ commits.</p>
+      <p>Practice problem platform for UCSD's DSC 10 course hosting past exams and discussion materials. Built LaTeX-to-Markdown conversion tools and standardized problem formatting system.</p>
       <div class="project-links">
-        <a href="https://github.com/dsc-courses/practice.dsc10.com" class="project-link">GitHub →</a>
         <a href="https://practice.dsc10.com/" class="project-link">Visit Site →</a>
       </div>
     </div>
@@ -380,19 +450,18 @@
     <div class="project-card gsap-card">
       <div class="project-card-logo"><img src="assets/hkn.png" alt="HKN" /></div>
       <div class="project-header">
-        <h3>HAB Forecasting: Harmful Algal Bloom Prediction</h3>
-        <span class="project-tag">Python • Ensemble ML • Oceanographic Data</span>
+        <h3>HAB Forecasting: Harmful Algal Bloom Prediction (WIP)</h3>
+         <span class="project-tag">Python • EDM–LSTM • Time-Series Forecasting • Oceanographic Data</span>
       </div>
-      <p>Research project predicting harmful algal blooms at Scripps Pier using ensemble ML models (750 models). Multi-timeframe forecasting (1-3 weeks) with configurable thresholds and confidence intervals. Deployed live forecasting tool integrated with SCCOOS monitoring data.</p>
+      <p>Developed and deployed a web platform with the HKN project team for forecasting bioluminescent harmful algal blooms (HABs) at UCSD Scripps, integrating our EDM–LSTM model with real-time coastal monitoring data.</p>
       <div class="project-links">
-        <a href="https://github.com/aparaselli/HAB-Prediction-Research" class="project-link">GitHub →</a>
-        <a href="https://my-frontend-bucket-459820.storage.googleapis.com/index.html" class="project-link">Live Demo →</a>
+        <a href="https://coollab2.sioword.ucsd.edu/hab-bioluminence-predictions/" class="project-link">Visit Site →</a>
       </div>
     </div>
 
   </div>
 
-  <h2 class="reveal delay-4" id="personal-projects">Personal Projects <span class="mem-addr">0x6000</span></h2>
+  <h2 class="reveal delay-4">Personal Projects <span class="mem-addr">0x6000</span></h2>
   <div class="video-gallery">
 
     <div class="video-card gsap-card" data-index="0001">
